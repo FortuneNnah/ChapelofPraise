@@ -1,15 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,80₀;0,9₀₀;1,1₀₀;1,2₀₀;1,3₀₀;1,4₀₀;1,5₀₀;1,6₀₀;1,7₀₀;1,8₀₀;1,9₀₀&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1,h2,h3 {
+body{
   font-family: Montserrat;
 }
+/* 
+h1,h2,h3 {
+  font-family: Montserrat;
+} */
 
-p{
+/* p,li{
   font-family: Open Sans;
+} */
+
+.Header-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  padding: 15px 30px;
 }
+.Header-container .logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.Header-container img{
+  width: 4.8rem; 
+  height: auto;
+}
+
+.navlinks{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navlinks li{
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  margin: 0 15px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.navlinks li:hover{
+  color: #007BFF;
+  transition: color 0.3s ease;
+}
+
+.Header-container button{
+  padding: 8px 30px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.Header-container button:hover{
+  background: #0465cc;
+  transition: background 0.3s ease;
+}
+
