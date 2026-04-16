@@ -7,6 +7,7 @@
 
 body{
   font-family: Montserrat;
+  scroll-behavior: smooth;
 }
 /* 
 h1,h2,h3 {
@@ -21,8 +22,8 @@ h1,h2,h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  padding: 15px 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  padding: 10px 30px;
 }
 .Header-container .logo{
   display: flex;
@@ -56,6 +57,7 @@ h1,h2,h3 {
 }
 
 .Header-container button{
+  width: fit-content;
   padding: 8px 30px;
   background: #007BFF;
   color: white;
@@ -70,3 +72,31 @@ h1,h2,h3 {
   transition: background 0.3s ease;
 }
 
+.Hero-section{
+  background-image: url('public/aaron-burden-vKBdY7e7KFk-unsplash.jpg');
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 87vh;
+  background-color: #f1f1f1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 20px;
+  padding: 0 30px;
+}
+
+.Hero-section h1{
+  font-size: 3rem;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+.Hero-section p{
+  /* font-size: 1.2rem; */
+  /* color: #333; */
+  max-width: 700px;
+}
