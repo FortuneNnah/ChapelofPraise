@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="Header-container">
       <div className="logo">
         <img src="/chapel logo.png" alt="" />
         <h3>Chapel Of Praise</h3>
       </div>
-      <ul className="navlinks">
+
+      {/* Hamburger Menu Button - Hidden on desktop */}
+      <button className="hamburger-menu" onClick={toggleMenu}>
+        <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+      </button>
+
+      <ul className={`navlinks ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
         <li>Home</li>
         <li>About</li>
         <li>Units</li>

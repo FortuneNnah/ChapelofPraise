@@ -77,6 +77,59 @@ h1,h2,h3 {
   transition: background 0.3s ease;
 }
 
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1000;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background: #007BFF;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-menu-open {
+  display: flex !important;
+  flex-direction: column !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: #e5e5e5 !important;
+  padding: 20px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  z-index: 999;
+}
+
+.mobile-menu-open li {
+  margin: 10px 0 !important;
+  text-align: center !important;
+}
+
 .Hero-section {
   background-image: url('public/aaron-burden-vKBdY7e7KFk-unsplash.jpg');
   background-position: fixed;
@@ -102,7 +155,7 @@ h1,h2,h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -137,19 +190,15 @@ h1,h2,h3 {
 .section1-content{
   display: flex;
   padding: 30px;
-  align-items: center;
   justify-content: space-evenly;
+  height: 100%;
 }
 
 .imgs{
   position: relative;
   padding-top: 10px;
 }
-/* 
-.imgs img{
-  width: 400px;
-  height: 400px;
-} */
+
 
 .img1 {
   width: 350px;
@@ -176,7 +225,7 @@ h1,h2,h3 {
   display: flex;
   flex-direction: column;
   max-width: 550px;
-  height: fit-content;
+  align-self: center;
 }
 
 .text .overhead{
@@ -202,5 +251,324 @@ h1,h2,h3 {
   padding: 0 0 0 20px;
   border-left: 3px solid #000;
   line-height: 1.5;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ======================================== */
+
+/* Large Tablets (1024px and below) */
+@media (max-width: 1024px) {
+  .Header-container {
+    padding: 10px 20px;
+  }
+
+  .Header-container img {
+    width: 4rem;
+  }
+
+  .navlinks li {
+    margin: 0 10px;
+    font-size: 0.9rem;
+  }
+
+  .Header-container button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .Hero-section {
+    height: 80vh;
+    padding: 0 20px;
+  }
+
+  .Hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .Hero-section p {
+    max-width: 500px;
+  }
+
+  .section1-container {
+    padding: 0 20px;
+    height: auto;
+    min-height: 80vh;
+  }
+
+  .section1-content {
+    flex-direction: column;
+    padding: 20px;
+    gap: 40px;
+  }
+
+  .imgs {
+    order: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .img1, .img2 {
+    width: 280px;
+    height: 320px;
+  }
+
+  .img2 {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-top: -20px;
+    margin-left: 15px;
+  }
+
+  .section1-content .text {
+    order: 1;
+    text-align: center;
+    max-width: 100%;
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .Header-container {
+    padding: 8px 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .Header-container .logo {
+    order: 1;
+    flex: 1;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    order: 2;
+  }
+
+  .navlinks {
+    display: none; /* Hidden by default on tablet */
+  }
+
+  .Header-container button {
+    order: 3;
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+
+  .navlinks li {
+    margin: 0 8px;
+    font-size: 0.85rem;
+  }
+
+  .Header-container img {
+    width: 3.5rem;
+  }
+
+  .Hero-section {
+    height: 70vh;
+    padding: 0 15px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .Hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .Hero-section p {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section1-container {
+    padding: 0 15px;
+    min-height: 70vh;
+  }
+
+  .section1-content {
+    padding: 15px;
+    gap: 30px;
+  }
+
+  .img1, .img2 {
+    width: 250px;
+    height: 280px;
+  }
+
+  .img2 {
+    margin-top: -15px;
+    margin-left: 12px;
+  }
+
+  .text .overhead {
+    font-size: 13px;
+  }
+
+  .text h1 {
+    font-size: 1.5rem;
+  }
+
+  .text .p1, .text .p2 {
+    font-size: 0.9rem;
+  }
+}
+
+/* Large Phones (480px and below) */
+@media (max-width: 480px) {
+  .Header-container {
+    padding: 8px 10px;
+    position: relative;
+  }
+
+  .Header-container .logo {
+    flex: 0 0 auto;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    order: 2;
+  }
+
+  .navlinks {
+    display: none; /* Hidden by default on mobile */
+  }
+
+  .Header-container button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .Header-container img {
+    width: 3rem;
+  }
+
+  .Hero-section {
+    height: 60vh;
+    padding: 0 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .Hero-section h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .Hero-section p {
+    max-width: 100%;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .section1-container {
+    padding: 0 10px;
+    min-height: 60vh;
+  }
+
+  .section1-content {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .img1, .img2 {
+    width: 200px;
+    height: 240px;
+  }
+
+  .img2 {
+    margin-top: -12px;
+    margin-left: 10px;
+  }
+
+  .text .overhead {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .text h1 {
+    font-size: 1.3rem;
+    padding: 8px 0;
+  }
+
+  .text .p1 {
+    font-size: 0.85rem;
+    padding-bottom: 10px;
+  }
+
+  .text .p2 {
+    font-size: 0.85rem;
+    padding-left: 15px;
+  }
+}
+
+/* Small Phones (360px and below) */
+@media (max-width: 360px) {
+  .Header-container {
+    padding: 6px 8px;
+  }
+
+  .Header-container img {
+    width: 2.5rem;
+  }
+
+  .Header-container button {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    right: 8px;
+  }
+
+  .Hero-section {
+    height: 55vh;
+    padding: 0 8px;
+  }
+
+  .Hero-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .Hero-section p {
+    font-size: 0.8rem;
+  }
+
+  .section1-container {
+    padding: 0 8px;
+    min-height: 55vh;
+  }
+
+  .section1-content {
+    padding: 8px;
+    gap: 15px;
+  }
+
+  .img1, .img2 {
+    width: 180px;
+    height: 220px;
+  }
+
+  .img2 {
+    margin-top: -10px;
+    margin-left: 8px;
+  }
+
+  .text .overhead {
+    font-size: 11px;
+  }
+
+  .text h1 {
+    font-size: 1.2rem;
+  }
+
+  .text .p1, .text .p2 {
+    font-size: 0.8rem;
+  }
+
+  .text .p2 {
+    padding-left: 12px;
+  }
 }
 
