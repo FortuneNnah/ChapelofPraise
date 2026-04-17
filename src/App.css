@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: Montserrat;
   scroll-behavior: smooth;
 }
+
 /* 
 h1,h2,h3 {
   font-family: Montserrat;
@@ -18,31 +20,34 @@ h1,h2,h3 {
   font-family: Open Sans;
 } */
 
-.Header-container{
+.Header-container {
+  background-color: #e5e5e5;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
   padding: 10px 30px;
 }
-.Header-container .logo{
+
+.Header-container .logo {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
-.Header-container img{
-  width: 4.8rem; 
+
+.Header-container img {
+  width: 4.8rem;
   height: auto;
 }
 
-.navlinks{
+.navlinks {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.navlinks li{
+.navlinks li {
   list-style: none;
   text-decoration: none;
   color: black;
@@ -51,12 +56,12 @@ h1,h2,h3 {
   font-weight: 500;
 }
 
-.navlinks li:hover{
+.navlinks li:hover {
   color: #007BFF;
   transition: color 0.3s ease;
 }
 
-.Header-container button{
+.Header-container button {
   width: fit-content;
   padding: 8px 30px;
   background: #007BFF;
@@ -67,16 +72,17 @@ h1,h2,h3 {
   font-size: 1rem;
 }
 
-.Header-container button:hover{
+.Header-container button:hover {
   background: #0465cc;
   transition: background 0.3s ease;
 }
 
-.Hero-section{
+.Hero-section {
   background-image: url('public/aaron-burden-vKBdY7e7KFk-unsplash.jpg');
   background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   width: 100%;
   height: 87vh;
   background-color: #f1f1f1;
@@ -89,14 +95,112 @@ h1,h2,h3 {
   padding: 0 30px;
 }
 
-.Hero-section h1{
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.Hero-container {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.Hero-section h1 {
   font-size: 3rem;
   padding-bottom: 10px;
   font-weight: 700;
 }
 
-.Hero-section p{
-  /* font-size: 1.2rem; */
-  /* color: #333; */
-  max-width: 700px;
+.Hero-section p {
+  max-width: 600px;
+  line-height: 1.5;
+  font-style: italic;
 }
+
+
+/* Section1.jsx */
+
+.section1-container{
+  padding: 0 30px;
+  width: 100%;
+  height: 90vh;
+  background-color: #e5e5e5;
+}
+
+.section1-content{
+  display: flex;
+  padding: 30px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.imgs{
+  position: relative;
+  padding-top: 10px;
+}
+/* 
+.imgs img{
+  width: 400px;
+  height: 400px;
+} */
+
+.img1 {
+  width: 350px;
+  height: 400px;  
+  position: relative;
+  left: -50px;
+  z-index: 1;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.img2 {
+  width: 330px;
+  height: 400px;
+  position: absolute;
+  top: 200px;     /* push downward */
+  left: 100px;    /* push sideways */
+  z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.section1-content .text{
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  height: fit-content;
+}
+
+.text .overhead{
+  font-size: 15px;
+  color: #007BFF;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* margin-bottom: 10px; */
+}
+
+.text h1{
+  padding: 10px 0;
+  /* font-weight: 700; */
+}
+
+.text .p1{
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.text .p2{
+  padding: 0 0 0 20px;
+  border-left: 3px solid #000;
+  line-height: 1.5;
+}
+
