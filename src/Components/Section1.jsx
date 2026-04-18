@@ -5,8 +5,8 @@ const Section1 = () => {
     <div className='section1-container'>
       <div className="section1-content">
         <div className="imgs">
-          <img className='img1' src="public/mamsnew2.jpg" alt=""  />
-          <img className='img2' src="public/mams new (10).jpg" alt="" />
+          <img className='img1' src="/mams1.jpg" alt=""  />
+          <img className='img2' src="/mams2.jpg" alt="" />
         </div>
         <div className="text">
           <p className='overhead'>work of the church</p>

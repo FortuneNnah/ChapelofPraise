@@ -137,7 +137,7 @@ h1,h2,h3 {
   background-size: cover;
   position: relative;
   width: 100%;
-  height: 87vh;
+  height: 100vh;
   background-color: #f1f1f1;
   color: #fff;
   display: flex;
@@ -160,6 +160,7 @@ h1,h2,h3 {
 }
 
 .Hero-container {
+  width: 800px;
   position: relative;
   z-index: 2;
   color: #fff;
@@ -180,11 +181,19 @@ h1,h2,h3 {
 
 /* Section1.jsx */
 
-.section1-container{
+.section1-container, .section3-container{
   padding: 0 30px;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background-color: #e5e5e5;
+  gap: 10px ;
+}
+
+.section2-container{
+  padding: 0 30px;
+  width: 100%;
+  height: 100vh;
+  background-color: #d4d3d3;
 }
 
 .section1-content{
@@ -201,24 +210,24 @@ h1,h2,h3 {
 
 
 .img1 {
-  width: 350px;
+  width: 100%;
   height: 400px;  
   position: relative;
   left: -50px;
   z-index: 1;
   border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
 .img2 {
-  width: 330px;
+  width: 100%;
   height: 400px;
   position: absolute;
   top: 200px;     /* push downward */
   left: 100px;    /* push sideways */
   z-index: 2;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .section1-content .text{
