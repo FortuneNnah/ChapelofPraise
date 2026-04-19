@@ -18,8 +18,8 @@ const Section2 = () => {
           </p>
         </div>
         <div className="imgs">
-          <img className="img1" src="/praise1.jpg" alt="" />
-          <img className="img2" src="/praise7.jpg" alt="" />
+          <img className="img1" src="src/assets/praise1.jpg" alt="" />
+          <img className="img2" src="src/assets/praise7.jpg" alt="" />
         </div>
       </div>
     </div>

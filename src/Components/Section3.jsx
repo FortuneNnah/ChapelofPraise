@@ -5,8 +5,8 @@ const Section3 = () => {
     <div className="section3-container">
       <div className="section1-content">
         <div className="imgs">
-          <img className="img1" src="/worship1.jpg" alt="" />
-          <img className="img2" src="/praise2.jpg" alt="" />
+          <img className="img1" src="src/assets/worship1.jpg" alt="" />
+          <img className="img2" src="src/assets/praise2.jpg" alt="" />
         </div>
         <div className="text">
           <h1>We Praise God Without Steeze!</h1>

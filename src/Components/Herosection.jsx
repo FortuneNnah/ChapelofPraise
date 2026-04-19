@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <div className="Header-container">
       <div className="logo">
-        <img src="/chapel logo.png" alt="Chapel Of Praise Logo" />
+        <img src="src/assets/chapel logo.png" alt="Chapel Of Praise Logo" />
         <h3>Chapel Of Praise</h3>
       </div>
 
