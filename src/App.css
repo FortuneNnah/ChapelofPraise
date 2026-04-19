@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* ========================================
+/* ============================================================
    RESET & BASE
-   ======================================== */
+   ============================================================ */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -26,9 +26,9 @@ img {
   display: block;
 }
 
-/* ========================================
-   HEADER — mobile first
-   ======================================== */
+/* ============================================================
+   HEADER  —  mobile first (logo + hamburger only)
+   ============================================================ */
 .Header-container {
   background-color: #e5e5e5;
   display: flex;
@@ -49,7 +49,7 @@ img {
 }
 
 .Header-container .logo h3 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -59,7 +59,7 @@ img {
   height: auto;
 }
 
-/* ── Join Us button — HIDDEN on mobile ── */
+/* Join Us — hidden on mobile */
 .herobtn {
   display: none;
   padding: 7px 20px;
@@ -74,12 +74,9 @@ img {
   white-space: nowrap;
   transition: background 0.3s ease;
 }
+.herobtn:hover { background: #0465cc; }
 
-.herobtn:hover {
-  background: #0465cc;
-}
-
-/* ── Hamburger — visible on mobile ── */
+/* Hamburger — always visible on mobile */
 .hamburger-menu {
   display: flex;
   flex-direction: column;
@@ -94,34 +91,21 @@ img {
   z-index: 101;
   flex-shrink: 0;
 }
-
-.hamburger-menu:focus {
-  outline: none;
-}
+.hamburger-menu:focus { outline: none; }
 
 .hamburger-line {
   width: 100%;
   height: 3px;
   background: #007BFF;
-  border-radius: 2px;
+  border-radius: 5px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
 }
+.hamburger-line.open:nth-child(1) { transform: rotate(45deg) translate(5.5px, 5.5px); }
+.hamburger-line.open:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-line.open:nth-child(3) { transform: rotate(-45deg) translate(5.5px, -5.5px); }
 
-.hamburger-line.open:nth-child(1) {
-  transform: rotate(45deg) translate(5.5px, 5.5px);
-}
-
-.hamburger-line.open:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.hamburger-line.open:nth-child(3) {
-  transform: rotate(-45deg) translate(5.5px, -5.5px);
-}
-
-/* ── Nav — hidden on mobile, toggled open ── */
+/* Nav — hidden by default, full-screen overlay when open */
 .navlinks {
   display: none;
   list-style: none;
@@ -131,10 +115,10 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: fixed;
   inset: 0;
   background: #e5e5e5;
-  justify-content: center;
   z-index: 99;
   padding: 24px;
   gap: 0;
@@ -152,17 +136,14 @@ img {
   text-align: center;
   transition: color 0.2s ease;
 }
+.navlinks li:last-child { border-bottom: none; }
+.navlinks li:hover { color: #007BFF; }
 
-.navlinks li:last-child {
-  border-bottom: none;
-}
-
-.navlinks li:hover {
-  color: #007BFF;
-}
-
+/* ============================================================
+   HERO  —  mobile first
+   ============================================================ */
 .Hero-section {
-  background-image: url('/aaron-burden-vKBdY7e7KFk-unsplash.jpg');
+  background-image: url('public/praise7.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -173,7 +154,7 @@ img {
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;       /* centered on mobile */
   padding: 80px 20px 48px;
 }
 
@@ -191,7 +172,7 @@ img {
   max-width: 760px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;           /* centered on mobile */
   text-align: center;
   gap: 14px;
 }
@@ -211,182 +192,161 @@ img {
   max-width: 520px;
 }
 
+/* CTA inside hero — always visible (replaces the header button on mobile) */
+.hero-cta {
+  margin-top: 8px;
+  padding: 12px 32px;
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.hero-cta:hover {
+  background: #0465cc;
+  transform: translateY(-2px);
+}
 
-.section1-container, .section3-container{
-  padding: 10px;
+/* ============================================================
+   SECTION 1 & 3  —  mobile first (stacked)
+   ============================================================ */
+.section1-container,
+.section3-container {
   width: 100%;
-  height: 100vh;
   background-color: #e5e5e5;
+  padding: 52px 20px 60px;       /* generous vertical breathing room */
 }
 
-.section1-content{
-  display: flex;
-  padding: 30px;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.imgs{
+.section2-container {
   width: 100%;
-  position: relative;
-  padding-top: 10px;
+  background-color: #d4d3d3;
+  padding: 52px 20px 60px;
 }
 
-.imgs .img1 {
-  width: 100%;
-  height: 400px;  
-  position: relative;
-  left: -50px;
-  z-index: 1;
-  border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.imgs .img2 {
-  width: 100%;
-  height: 400px;
-  position: absolute;
-  top: 200px;     /* push downward */
-  left: 100px;    /* push sideways */
-  z-index: 2;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.section1-content .text{
+/* Stack vertically on mobile */
+.section1-content {
   display: flex;
   flex-direction: column;
-  max-width: 550px;
-  height: fit-content;
+  align-items: center;
+  gap: 48px;                     /* space between text and image stack */
 }
 
-.text .overhead{
-  font-size: 15px;
+/* ── Text block ── */
+.section1-content .text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.text .overhead {
+  font-size: 0.72rem;
   color: #007BFF;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 6px;
 }
 
-.text h1{
+.text h1 {
+  font-size: clamp(1.3rem, 5vw, 2rem);
   padding: 10px 0;
-  /* font-weight: 700; */
+  line-height: 1.25;
 }
 
-.text .p1{
-  font-weight: bold;
-  padding-bottom: 15px;
+.text .p1 {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  font-weight: 700;
+  padding-bottom: 14px;
 }
 
-.text .p2{
-  padding: 0 0 0 20px;
+.text .p2 {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  padding: 0 0 0 16px;
   border-left: 3px solid #000;
-  line-height: 1.5;
+  line-height: 1.6;
+  text-align: left;
 }
 
+/* ── Image stack  —  single source of truth, no duplicates ── */
 .imgs {
   position: relative;
-  height: 320px;
+  width: 280px;                  /* outer container width on mobile */
+  height: 300px;                 /* must be set so absolute children show */
   flex-shrink: 0;
 }
 
-img.img1 {
-  width: 100%;
-  height: 400px;
+/* Back image */
+.imgs .img1 {
   position: absolute;
   top: 0;
   left: 0;
+  width: 220px;
+  height: 260px;
   z-index: 1;
   border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
   object-fit: cover;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
-img.img2 {
-  width: 100%;
-  height: 400px;
+/* Front image — offset to the right and down */
+.imgs .img2 {
   position: absolute;
-  /* top: 2rem; */
-  left: 80px;
+  top: 50px;
+  left: 70px;
+  width: 200px;
+  height: 240px;
   z-index: 2;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
-/* ========================================
-   TABLET — 600px and up
-   ======================================== */
+/* ============================================================
+   TABLET  —  600px +
+   ============================================================ */
 @media (min-width: 600px) {
-  .Header-container {
-    padding: 10px 24px;
-  }
+  .Header-container { padding: 10px 24px; }
+  .Header-container img { width: 3.5rem; }
+  .Header-container .logo h3 { font-size: 1rem; }
 
-  .Header-container img {
-    width: 3.5rem;
-  }
-
-  .Header-container .logo h3 {
-    font-size: 1rem;
-  }
-
+  /* Hero — left-aligned on wider screens */
   .Hero-section {
     justify-content: flex-start;
     padding: 80px 32px 48px;
   }
-
   .Hero-container {
     align-items: flex-start;
     text-align: left;
   }
 
-  .Hero-section p {
-    margin: 0;
-  }
-
+  /* Section padding */
   .section1-container,
   .section3-container,
-  .section2-container {
-    padding: 60px 24px;
-  }
+  .section2-container { padding: 64px 32px; }
 
-  .section1-content .text {
-    text-align: left;
-  }
+  .section1-content .text { text-align: left; }
 
-  .imgs {
-    max-width: 380px;
-    height: 360px;
-  }
-
-  .img1 {
-    width: 270px;
-    height: 310px;
-  }
-
-  .img2 {
-    width: 220px;
-    height: 260px;
-    top: 70px;
-    left: 110px;
-  }
+  /* Slightly larger image stack */
+  .imgs { width: 340px; height: 360px; }
+  .imgs .img1 { width: 270px; height: 310px; }
+  .imgs .img2 { width: 240px; height: 280px; top: 65px; left: 90px; }
 }
 
-/* ========================================
-   DESKTOP — 900px and up
-   Show full nav, hide hamburger, show Join Us
-   ======================================== */
+/* ============================================================
+   DESKTOP  —  900px +
+   Show nav, hide hamburger, show Join Us in header
+   ============================================================ */
 @media (min-width: 900px) {
-  .hamburger-menu {
-    display: none;
-  }
-
-  .herobtn {
-    display: block;
-    padding: 8px 26px;
-    font-size: 0.95rem;
-  }
+  /* Header */
+  .hamburger-menu { display: none; }
+  .herobtn { display: block; padding: 8px 26px; font-size: 0.95rem; }
+  .Header-container img { width: 4rem; }
 
   .navlinks {
     display: flex;
@@ -397,7 +357,6 @@ img.img2 {
     gap: 0;
     justify-content: center;
   }
-
   .navlinks li {
     font-size: 0.95rem;
     padding: 0;
@@ -406,9 +365,13 @@ img.img2 {
     width: auto;
   }
 
-  .Header-container img {
-    width: 4rem;
-  }
+  /* Hero CTA already in hero — hide it at desktop if desired (optional) */
+  /* .hero-cta { display: none; } */
+
+  /* Section 1 — side by side */
+  .section1-container,
+  .section3-container,
+  .section2-container { padding: 72px 40px; }
 
   .section1-content {
     flex-direction: row;
@@ -417,80 +380,32 @@ img.img2 {
     gap: 40px;
   }
 
-  .section1-content .text {
-    max-width: 480px;
-  }
+  .section1-content .text { max-width: 480px; text-align: left; }
 
-  .imgs {
-    max-width: 440px;
-    height: 460px;
-  }
-
-  .img1 {
-    width: 310px;
-    height: 370px;
-    left: -30px;
-  }
-
-  .img2 {
-    width: 260px;
-    height: 310px;
-    top: 120px;
-    left: 130px;
-  }
+  /* Larger image stack */
+  .imgs { width: 420px; height: 440px; }
+  .imgs .img1 { width: 320px; height: 370px; left: -20px; }
+  .imgs .img2 { width: 270px; height: 320px; top: 100px; left: 120px; }
 }
 
-/* ========================================
-   LARGE DESKTOP — 1200px and up
-   ======================================== */
+/* ============================================================
+   LARGE DESKTOP  —  1200px +
+   ============================================================ */
 @media (min-width: 1200px) {
-  .Header-container {
-    padding: 10px 40px;
-  }
+  .Header-container { padding: 10px 48px; }
+  .Header-container img { width: 4.8rem; }
+  .navlinks li { font-size: 1rem; margin: 0 15px; }
+  .herobtn { padding: 8px 32px; font-size: 1rem; }
 
-  .Header-container img {
-    width: 4.8rem;
-  }
-
-  .navlinks li {
-    font-size: 1rem;
-    margin: 0 15px;
-  }
-
-  .herobtn {
-    padding: 8px 32px;
-    font-size: 1rem;
-  }
-
-  .Hero-section {
-    padding: 0 40px;
-  }
+  .Hero-section { padding: 0 48px; }
 
   .section1-container,
   .section3-container,
-  .section2-container {
-    padding: 80px 40px;
-  }
+  .section2-container { padding: 88px 48px; }
 
-  .section1-content .text {
-    max-width: 550px;
-  }
+  .section1-content .text { max-width: 550px; }
 
-  .imgs {
-    max-width: 520px;
-    height: 520px;
-  }
-
-  .img1 {
-    width: 360px;
-    height: 420px;
-    left: -50px;
-  }
-
-  .img2 {
-    width: 300px;
-    height: 360px;
-    top: 150px;
-    left: 160px;
-  }
+  .imgs { width: 500px; height: 520px; }
+  .imgs .img1 { width: 370px; height: 430px; left: -40px; }
+  .imgs .img2 { width: 310px; height: 370px; top: 130px; left: 150px; }
 }
