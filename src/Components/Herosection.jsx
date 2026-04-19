@@ -46,9 +46,8 @@ export const Hero = () => {
     <div className="Hero-section">
       <div className="overlay"></div>
       <div className="Hero-container">
-        <h1>Welcome to<br />Chapel Of Praise</h1>
-        <p>No matter where you are on your journey, you are always welcome here.</p>
-        <p>Whether you're looking for answers or a place to belong, we invite you to join us.</p>
+        <h1>Welcome to Chapel Of Praise</h1>
+        <p>We are a community of believers committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
       </div>
     </div>
   );
