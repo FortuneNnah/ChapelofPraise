@@ -16,7 +16,7 @@ const Footer = () => {
         {/* Brand */}
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="src/assets/chapel logo.png" alt="Chapel Of Praise Logo" />
+            <img src="/imgs/chapel logo.png" alt="Chapel Of Praise Logo" />
             <h3>Chapel Of Praise</h3>
           </div>
           <p className="footer-about">

@@ -307,9 +307,6 @@ img {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
-/* ============================================================
-   TABLET  —  600px +
-   ============================================================ */
 @media (min-width: 600px) {
   .Header-container { padding: 10px 24px; }
   .Header-container img { width: 3.5rem; }
@@ -338,10 +335,6 @@ img {
   .imgs .img2 { width: 240px; height: 280px; top: 65px; left: 90px; }
 }
 
-/* ============================================================
-   DESKTOP  —  900px +
-   Show nav, hide hamburger, show Join Us in header
-   ============================================================ */
 @media (min-width: 900px) {
   /* Header */
   .hamburger-menu { display: none; }
@@ -365,8 +358,6 @@ img {
     width: auto;
   }
 
-  /* Hero CTA already in hero — hide it at desktop if desired (optional) */
-  /* .hero-cta { display: none; } */
 
   /* Section 1 — side by side */
   .section1-container,
@@ -799,7 +790,7 @@ img {
 /* Grid — 1 col on mobile */
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2fr;
   gap: 14px;
 }
 
