@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 const images = [
-  { src: "src/assets/praise1.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/Bassey.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/praise3.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/slide3.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/praise2.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/Brigtty.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/slide2.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/slide1.jpg", caption: "Sunday Worship Service" },
-  { src: "src/assets/praise3.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide9.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide2.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide3.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide4.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide5.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide6.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide7.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/slide2.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/praise3.jpg", caption: "Sunday Worship Service" },
 ];
 
 const Gallery = () => {
