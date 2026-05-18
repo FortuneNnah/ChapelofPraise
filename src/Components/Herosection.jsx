@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,6 +8,12 @@ export const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    if(isMenuOpen) {
+      setIsMenuOpen(false)
+    }
+  }
+  
   return (
     <div className="Header-container">
       <div className="logo">
@@ -14,7 +21,6 @@ export const Header = () => {
         <h3>Chapel Of Praise</h3>
       </div>
 
-      {/* Hamburger — visible only on mobile via CSS */}
       <button
         className="hamburger-menu"
         onClick={toggleMenu}
@@ -28,22 +34,32 @@ export const Header = () => {
 
       {/* Nav links */}
       <ul className={`navlinks ${isMenuOpen ? "mobile-menu-open" : ""}`}>
-        <li>Home</li>
-        <li>About</li>
-        <li>Units</li>
-        <li>Sermons</li>
-        <li>Contact Us</li>
+        <li>
+          <NavLink to="/" onClick={closeMenu} className={({ isActive }) => (isActive ? "active" : "")}>Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" onClick={closeMenu} className={({ isActive }) => (isActive ? "active" : "")}>About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/units" onClick={closeMenu} className={({ isActive }) => (isActive ? "active" : "")}>Units</NavLink>
+        </li>
+        <li>
+          <NavLink to="/sermons" onClick={closeMenu} className={({ isActive }) => (isActive ? "active" : "")}>Sermons</NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => (isActive ? "active" : "")}>Contact Us</NavLink>
+        </li>
       </ul>
 
       {/* Join Us — hidden on mobile, visible on desktop via CSS */}
-      <button className="herobtn">Join Us</button>
+      <button className="herobtn">Follow Us</button>
     </div>
   );
 };
 
 export const Hero = () => {
   return (
-    <div className="Hero-section">
+    <div id="Home" className="Hero-section">
       <div className="overlay"></div>
       <div className="Hero-container">
         <h1>Welcome to Chapel Of Praise</h1>
@@ -54,12 +70,7 @@ export const Hero = () => {
 };
 
 const Herosection = () => {
-  return (
-    <>
-      <Header />
-      <Hero />
-    </>
-  );
+  return <Hero />;
 };
 
 export default Herosection;

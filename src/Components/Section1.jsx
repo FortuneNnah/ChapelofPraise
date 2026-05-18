@@ -6,7 +6,7 @@ const Section1 = () => {
       <div className="section1-content">
         <div className="imgs">
           <img className='img1' src="/imgs/mams1.jpg" alt=""  />
-          <img className='img2' src="/imgs/mams2.jpg" alt="" />
+          <img className='img2' src="/imgs/mams4.jpg" alt="" />
         </div>
         <div className="text">
           <p className='overhead'>work of the church</p>

@@ -10,6 +10,8 @@ const images = [
   { src: "/imgs/slide7.jpg", caption: "Sunday Worship Service" },
   { src: "/imgs/slide2.jpg", caption: "Sunday Worship Service" },
   { src: "/imgs/praise3.jpg", caption: "Sunday Worship Service" },
+  { src: "/imgs/praise3.jpg", caption: "Sunday Worship Service" },
+  
 ];
 
 const Gallery = () => {
