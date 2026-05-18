@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Section1 from "./Section1";
+import Section2 from "./Section2";
+import Section3 from "./Section3";
+import Gallery from "./Gallery";
+import Footer from "./Footer";
+
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,7 +58,7 @@ export const Header = () => {
       </ul>
 
       {/* Join Us — hidden on mobile, visible on desktop via CSS */}
-      <button className="herobtn">Follow Us</button>
+      <button className="herobtn">Connect With Us</button>
     </div>
   );
 };
@@ -69,8 +75,18 @@ export const Hero = () => {
   );
 };
 
+
 const Herosection = () => {
-  return <Hero />;
+  return(
+    <>
+    <Hero />
+    <Section1 />
+    <Section2 />
+    <Section3 />
+    <Gallery />
+    <Footer />
+    </>
+  );
 };
 
 export default Herosection;

@@ -1,79 +1,22 @@
-import { useState } from "react";
-import Footer from './Footer';
-
-// ─── Sub-components ────────────────────────────────────────
-
-function SectionMarker({ label, light = false }) {
-  return (
-    <div className="section-marker">
-      <div className={`marker-dot${light ? " marker-dot--light" : ""}`} />
-      <span className={`marker-text${light ? " marker-text--light" : ""}`}>
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function ValueCard({ icon, title, description }) {
-  return (
-    <div className="value-card">
-      <div className="value-icon">{icon}</div>
-      <h4>{title}</h4>
-      <p>{description}</p>
-    </div>
-  );
-}
-
-function LeaderCard({ initials, name, role, bio }) {
-  return (
-    <div className="leader-card">
-      <div className="leader-avatar">{initials}</div>
-      <div>
-        <p className="leader-name">{name}</p>
-        <p className="leader-role">{role}</p>
-        <p className="leader-bio">{bio}</p>
-      </div>
-    </div>
-  );
-}
-
-function ServiceCard({ day, name, time }) {
-  return (
-    <div className="service-card">
-      <p className="service-day">{day}</p>
-      <p className="service-name">{name}</p>
-      <hr className="service-rule" />
-      <p className="service-time">{time}</p>
-    </div>
-  );
-}
-
-// ─── Data ──────────────────────────────────────────────────
+import React from "react";
+import Footer from "./Footer";
 
 const values = [
   {
-    icon: "📖",
-    title: "Word-Centered",
-    description:
-      "Scripture is our foundation — we preach, teach, and live by God's Word in all things.",
+    title: "Faith",
+    text: "Everything we do is rooted in the Word of God and centered on Christ.",
   },
   {
-    icon: "🎵",
-    title: "Spirit-Led Worship",
-    description:
-      "Authentic praise and worship are at the heart of every gathering and every life.",
-  },
-  {
-    icon: "🤝",
     title: "Community",
-    description:
-      "We are stronger together — a family that loves, supports, and lifts one another up.",
+    text: "We believe growth happens best in a loving and authentic family.",
   },
   {
-    icon: "🌍",
-    title: "Outreach",
-    description:
-      "We carry the Gospel beyond our walls to serve our city and reach the ends of the earth.",
+    title: "Worship",
+    text: "We create an atmosphere where people can genuinely encounter God.",
+  },
+  {
+    title: "Impact",
+    text: "We are committed to transforming lives within and beyond the church.",
   },
 ];
 
@@ -82,179 +25,220 @@ const leaders = [
     initials: "PS",
     name: "Pastor Samuel",
     role: "Senior Pastor",
-    bio: "A shepherd at heart, leading with humility, vision, and a deep love for God's people.",
   },
   {
     initials: "EG",
     name: "Elder Grace",
-    role: "Worship & Prayer",
-    bio: "Overseeing worship ministry and prayer culture with passion and devotion to God.",
+    role: "Worship Leader",
   },
   {
     initials: "DM",
     name: "Deacon Michael",
-    role: "Community & Outreach",
-    bio: "Championing service programs that extend the love of Christ into the community.",
+    role: "Community Outreach",
   },
 ];
 
-const services = [
-  { day: "Sunday", name: "Sunday Worship", time: "8:00 AM & 10:30 AM" },
-  { day: "Wednesday", name: "Bible Study", time: "6:00 PM" },
-  { day: "Friday", name: "Prayer & Praise Night", time: "7:00 PM" },
-];
-
-// ─── Main Component ─────────────────────────────────────────
-
 export default function AboutUs() {
   return (
-    <div id="About" className="about-page">
-
+    <div className="about-page">
       {/* HERO */}
       <section className="hero">
-        <div className="hero-grid" />
-        <div className="hero-glow" />
-        <div className="hero-inner">
-          <div className="hero-tag">
-            <span className="hero-tag-dot" />
-            Chapel of Praise
-          </div>
+        <div className="hero-bg" />
+
+        <div className="hero-content">
+          <span className="hero-label">CHAPEL OF PRAISE</span>
+
           <h1>
-            Who<br />we <em>are</em>
+            Building people.
+            <br />
+            Growing faith.
+            <br />
+            Transforming lives.
           </h1>
-          <hr className="hero-rule" />
-          <p className="hero-desc">
-            A community built on faith, moved by worship, and called to make
-            a difference — here and across the world.
+
+          <p>
+            A modern church community helping people experience God, discover
+            purpose, and live impactful lives through faith, worship, and
+            connection.
           </p>
-          <div className="hero-stats">
-            {[
-              { num: "20+", label: "Years of Ministry" },
-              { num: "3",   label: "Weekly Services" },
-              { num: "1",   label: "Family" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="stat-num">{s.num}</div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
+
+          <div className="hero-buttons">
+            <button className="primary-btn">Plan Your Visit</button>
+            <button className="secondary-btn">Watch Online</button>
+          </div>
+        </div>
+
+        <div className="hero-card">
+          <div>
+            <h3>20+</h3>
+            <span>Years of Ministry</span>
+          </div>
+
+          <div>
+            <h3>500+</h3>
+            <span>Lives Impacted</span>
+          </div>
+
+          <div>
+            <h3>3</h3>
+            <span>Weekly Services</span>
           </div>
         </div>
       </section>
 
-      {/* STORY */}
-      <section className="story">
-        <div className="story-left">
-          <SectionMarker label="Our Story" />
-          <h2>
-            Built on<br />faith &amp;<br /><em>community</em>
-          </h2>
-        </div>
-        <div className="story-right">
-          <p>
-            Chapel of Praise was founded on the belief that every person
-            deserves a place to encounter God, grow in community, and walk in
-            their God-given purpose.
-          </p>
-          <p>
-            From humble beginnings, we have grown into a vibrant,
-            multi-generational church family — one that celebrates the power
-            of worship and the transforming love of Christ.
-          </p>
-          <p>
-            For over two decades, we have been a beacon of hope in our
-            community, welcoming all who seek His presence and offering a home
-            for healing, belonging, and purpose.
-          </p>
-        </div>
-      </section>
+      {/* ABOUT */}
+      <section className="about-section">
+        <div className="section-tag">ABOUT US</div>
 
-      {/* MISSION & VISION */}
-      <section className="mv-section">
-        <div className="mv-panel mv-panel--border">
-          <span className="mv-num">01</span>
-          <SectionMarker label="Mission" light />
-          <h3>Why we exist</h3>
-          <p>
-            To glorify God by making devoted followers of Jesus Christ who
-            love God, love people, and make a lasting impact in the world
-            around them.
-          </p>
-        </div>
-        <div className="mv-panel">
-          <span className="mv-num">02</span>
-          <SectionMarker label="Vision" light />
-          <h3>Where we're going</h3>
-          <p>
-            To be a thriving house of worship where every nation, tongue, and
-            tribe finds community, healing, and the fullness of God's love.
-          </p>
+        <div className="about-grid">
+          <div>
+            <h2>A church focused on people, purpose, and God's presence.</h2>
+          </div>
+
+          <div className="about-text">
+            <p>
+              Chapel of Praise was founded with a vision to create a place where
+              people from every background can encounter God and grow
+              spiritually in a welcoming environment.
+            </p>
+
+            <p>
+              Over the years, we’ve become more than a church building — we are
+              a family committed to worship, discipleship, outreach, and making
+              a lasting difference in our community.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* VALUES */}
       <section className="values-section">
-        <div className="values-head">
+        <div className="section-header">
           <div>
-            <SectionMarker label="Core Values" />
-            <h2>What we<br />stand for</h2>
+            <span className="section-tag">OUR VALUES</span>
+            <h2>What defines us</h2>
           </div>
+
           <p>
-            The principles that shape how we worship, serve, and live together
-            as a church family.
+            The culture and principles that shape every gathering, conversation,
+            and community experience.
           </p>
         </div>
-        <div className="values-list">
-          {values.map((v) => (
-            <ValueCard key={v.title} {...v} />
+
+        <div className="values-grid">
+          {values.map((value) => (
+            <div className="value-card" key={value.title}>
+              <div className="value-line" />
+
+              <h3>{value.title}</h3>
+
+              <p>{value.text}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* LEADERSHIP */}
-      <section className="leadership">
-        <div className="leadership-head">
-          <div>
-            <SectionMarker label="Leadership" />
-            <h2>Our pastoral team</h2>
-          </div>
+      {/* MISSION */}
+      <section className="mission-section">
+        <div className="mission-card dark">
+          <span>01</span>
+
+          <h3>Our Mission</h3>
+
           <p>
-            Servant leaders guiding the congregation with humility, wisdom,
+            To raise devoted followers of Christ who love God, serve people, and
+            influence the world positively.
+          </p>
+        </div>
+
+        <div className="mission-card light">
+          <span>02</span>
+
+          <h3>Our Vision</h3>
+
+          <p>
+            To become a thriving spiritual community where lives are transformed
+            through worship, teaching, and genuine connection.
+          </p>
+        </div>
+      </section>
+
+      {/* LEADERS */}
+      <section className="leaders-section">
+        <div className="section-header">
+          <div>
+            <span className="section-tag">LEADERSHIP</span>
+            <h2>Meet our Leaders</h2>
+          </div>
+
+          <p>
+            Passionate servant leaders guiding the church with wisdom, humility,
             and vision.
           </p>
         </div>
+
         <div className="leaders-grid">
-          {leaders.map((l) => (
-            <LeaderCard key={l.name} {...l} />
+          {leaders.map((leader) => (
+            <div className="leader-card" key={leader.name}>
+              <div className="leader-avatar">{leader.initials}</div>
+
+              <h3>{leader.name}</h3>
+
+              <span>{leader.role}</span>
+            </div>
           ))}
         </div>
       </section>
 
       {/* SERVICES */}
-      <section className="services">
-        <div className="services-head">
-          <SectionMarker label="Join Us" light />
-          <h2>Service times</h2>
-        </div>
-        <div className="services-grid">
-          {services.map((s) => (
-            <ServiceCard key={s.day} {...s} />
-          ))}
+      <section className="services-section">
+        <div className="services-content">
+          <span className="section-tag light">JOIN US</span>
+
+          <h2>Service Times</h2>
+
+          <div className="service-list">
+            <div className="service-item">
+              <div>
+                <h3>Sunday Worship</h3>
+                <p>Main Auditorium</p>
+              </div>
+
+              <span>8:00AM & 10:30AM</span>
+            </div>
+
+            <div className="service-item">
+              <div>
+                <h3>Bible Study</h3>
+                <p>Midweek Gathering</p>
+              </div>
+
+              <span>Wednesday • 6PM</span>
+            </div>
+
+            <div className="service-item">
+              <div>
+                <h3>Prayer & Praise</h3>
+                <p>Worship Night</p>
+              </div>
+
+              <span>Friday • 7PM</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
+      <section className="cta-section">
         <div>
-          <p className="cta-quote">"Come as you are. Leave transformed."</p>
-          <p className="cta-sub">
-            You are welcome here — no matter where you're coming from.
-          </p>
-        </div>
-        <button className="cta-btn">Plan Your Visit →</button>
-      </section>
-          <Footer />
-    </div>
+          <span className="section-tag">YOU BELONG HERE</span>
 
+          <h2>Come experience a place filled with faith and purpose.</h2>
+        </div>
+
+        <button className="primary-btn">Visit This Sunday</button>
+      </section>
+      <Footer />
+    </div>
   );
 }
