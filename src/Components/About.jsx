@@ -7,8 +7,8 @@ const values = [
     text: "Everything we do is rooted in the Word of God and centered on Christ.",
   },
   {
-    title: "Community",
-    text: "We believe growth happens best in a loving and authentic family.",
+    title: "Family",
+    text: "We believe growth happens best in a loving and authentic church family.",
   },
   {
     title: "Worship",
@@ -20,7 +20,7 @@ const values = [
   },
   {
     title: "Fellowship",
-    text: "We value authentic relationships and intentional community building.",
+    text: "We value authentic relationships and intentional church fellowship.",
   }
 ];
 
@@ -65,7 +65,7 @@ export default function AboutUs() {
           </h1>
 
           <p>
-            A modern church community helping people experience God, discover
+            A modern church family helping people experience God, discover
             purpose, and live impactful lives through faith, worship, and
             connection.
           </p>
@@ -129,7 +129,7 @@ export default function AboutUs() {
 
           <p>
             The culture and principles that shape every gathering, conversation,
-            and community experience.
+            and church experience.
           </p>
         </div>
 
@@ -165,7 +165,7 @@ export default function AboutUs() {
           <h3>Our Vision</h3>
 
           <p>
-            To become a thriving spiritual community where lives are transformed
+            To become a thriving spiritual church family where lives are transformed
             through worship, teaching, and genuine connection.
           </p>
         </div>

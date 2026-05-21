@@ -69,7 +69,7 @@ export const Hero = () => {
       <div className="overlay"></div>
       <div className="Hero-container">
         <h1>Welcome to Chapel Of Praise</h1>
-        <p>We are a community of believers committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
+        <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
       </div>
     </div>
   );

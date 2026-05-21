@@ -49,7 +49,7 @@ const Gallery = () => {
         <span className="overhead">Our Moments</span>
         <h1>Life at Chapel Of Praise</h1>
         <p className="gallery-sub">
-          A glimpse into our vibrant community — worship, fellowship, and
+          A glimpse into our vibrant church life — worship, fellowship, and
           service.
         </p>
       </div>
