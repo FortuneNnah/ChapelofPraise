@@ -246,7 +246,6 @@ export default function AboutUs() {
 
         <button className="primary-btn">Visit Us This Sunday</button>
       </section>
-      <Footer />
     </div>
   );
 }
