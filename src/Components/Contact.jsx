@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Footer from "./Footer";
-
 // ─── Data ──────────────────────────────────────────────────
 
 const contactItems = [
@@ -322,7 +320,6 @@ export default function ContactUs() {
           </form>
         )}
       </section>
-        <Footer />
     </div>
   );
 }
