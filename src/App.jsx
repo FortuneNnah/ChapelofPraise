@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./Components/Herosection";
 import Herosection from "./Components/Herosection";
 import About from "./Components/About";
+import ContactUs from "./Components/Contact";
 import Section1 from "./Components/Section1";
 import Section2 from "./Components/Section2";
 import Section3 from "./Components/Section3";
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Herosection />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/units" element={<Section1 />} />
         <Route path="/sermons" element={<Section2 />} />
         <Route path="/events" element={<Section3 />} />

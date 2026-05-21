@@ -19,7 +19,8 @@ const values = [
     text: "We are committed to transforming lives within and beyond the church.",
   },
   {
-    title: "",
+    title: "Fellowship",
+    text: "We value authentic relationships and intentional community building.",
   }
 ];
 
