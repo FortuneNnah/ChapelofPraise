@@ -54,7 +54,7 @@ export default function Unit() {
             onKeyDown={(e) => { if (e.key === 'Enter') setActive(u); }}
           >
             <div className="unit-card-top">
-              <div className="unit-avatar">{u.name.split(" ").map((word) => word[0]).slice(0, 2).join("")}</div>
+              {/* <div className="unit-avatar">{u.name.split(" ").map((word) => word[0]).slice(0, 2).join("")}</div> */}
               <span className="unit-chip">UNIT {u.id}</span>
             </div>
 
