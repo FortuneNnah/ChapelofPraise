@@ -18,7 +18,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Herosection />} />
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/About" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/units" element={<Unit />} />
         <Route path="/sermons" element={<Section2 />} />
