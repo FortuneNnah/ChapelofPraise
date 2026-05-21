@@ -10,6 +10,7 @@ import Section2 from "./Components/Section2";
 import Section3 from "./Components/Section3";
 import Gallery from "./Components/Gallery";
 import Footer from "./Components/Footer";
+import AboutUs from "./Components/About";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Herosection />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/units" element={<Section1 />} />
         <Route path="/sermons" element={<Section2 />} />
