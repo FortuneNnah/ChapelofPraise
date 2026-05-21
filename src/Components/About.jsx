@@ -18,35 +18,42 @@ const values = [
     title: "Impact",
     text: "We are committed to transforming lives within and beyond the church.",
   },
+  {
+    title: "",
+  }
 ];
 
 const leaders = [
   {
-    initials: "PS",
-    name: "Pastor Samuel",
+    initials: "GU",
+    name: "Rev. G. George Udoh",
     role: "Senior Pastor",
   },
   {
-    initials: "EG",
-    name: "Elder Grace",
-    role: "Worship Leader",
+    initials: "OU",
+    name: "Rev. Mama Otobong Umoren",
+    role: "Chaplain",
   },
   {
-    initials: "DM",
-    name: "Deacon Michael",
-    role: "Community Outreach",
+    initials: "DS",
+    name: "Daniel Sunday Umoh",
+    role: "Chapel Representative",
   },
+  {
+    initials: "AK",
+    name: "Angela Kuffrey",
+    role: "Ass. Chapel Representative"
+  }
 ];
 
 export default function AboutUs() {
   return (
     <div className="about-page">
-      {/* HERO */}
       <section className="hero">
         <div className="hero-bg" />
 
         <div className="hero-content">
-          <span className="hero-label">CHAPEL OF PRAISE</span>
+          <span className="hero-label">The Biggest Family on Campus</span>
 
           <h1>
             Building people.
@@ -105,7 +112,7 @@ export default function AboutUs() {
             <p>
               Over the years, we’ve become more than a church building — we are
               a family committed to worship, discipleship, outreach, and making
-              a lasting difference in our community.
+              a lasting difference in Akwa Ibom State University.
             </p>
           </div>
         </div>
@@ -172,7 +179,7 @@ export default function AboutUs() {
           </div>
 
           <p>
-            Passionate servant leaders guiding the church with wisdom, humility,
+            Passionate leaders guiding the church with wisdom, humility,
             and vision.
           </p>
         </div>
@@ -193,7 +200,7 @@ export default function AboutUs() {
       {/* SERVICES */}
       <section className="services-section">
         <div className="services-content">
-          <span className="section-tag light">JOIN US</span>
+          <span className="section-tag dark">JOIN US</span>
 
           <h2>Service Times</h2>
 
@@ -204,7 +211,7 @@ export default function AboutUs() {
                 <p>Main Auditorium</p>
               </div>
 
-              <span>8:00AM & 10:30AM</span>
+              <span>8:00AM & 10:00AM</span>
             </div>
 
             <div className="service-item">
@@ -213,16 +220,16 @@ export default function AboutUs() {
                 <p>Midweek Gathering</p>
               </div>
 
-              <span>Wednesday • 6PM</span>
+              <span>Tuesday • 6PM</span>
             </div>
 
             <div className="service-item">
               <div>
-                <h3>Prayer & Praise</h3>
-                <p>Worship Night</p>
+                <h3>Miracle Service</h3>
+                <p>Prayer & Praise</p>
               </div>
 
-              <span>Friday • 7PM</span>
+              <span>Friday • 6PM</span>
             </div>
           </div>
         </div>
@@ -236,7 +243,7 @@ export default function AboutUs() {
           <h2>Come experience a place filled with faith and purpose.</h2>
         </div>
 
-        <button className="primary-btn">Visit This Sunday</button>
+        <button className="primary-btn">Visit Us This Sunday</button>
       </section>
       <Footer />
     </div>
