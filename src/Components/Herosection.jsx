@@ -4,7 +4,6 @@ import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
 import Gallery from "./Gallery";
-import Footer from "./Footer";
 
 
 export const Header = () => {
@@ -84,7 +83,6 @@ const Herosection = () => {
     <Section2 />
     <Section3 />
     <Gallery />
-    <Footer />
     </>
   );
 };
