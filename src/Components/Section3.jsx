@@ -9,16 +9,14 @@ const Section3 = () => {
           <img className="img2" src="/imgs/praise2.jpg" alt="" />
         </div>
         <div className="text">
-          <h1>We Praise God Without Steeze!</h1>
+          <h1>A Place to Encounter God</h1>
           <p className="p1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed
-            consequatur, nats dignissimos tempora ne.
+            Every gathering is designed to help you meet God, be encouraged in
+            your walk, and connect with others who share your faith.
           </p>
           <p className="p2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis,
-            debitis pariatur quae quidem ratione consectetur dicta. Dolorum,
-            eligendi? Asperiores ducimus perspiciatis doloribus natus ea
-            molestiae dolores dignissimos recusandae similique tempora.
+            From worship to teaching, we seek to create meaningful moments that
+            strengthen your relationship with Christ and inspire spiritual growth.
           </p>
         </div>
       </div>

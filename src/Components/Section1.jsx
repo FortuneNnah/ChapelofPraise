@@ -11,8 +11,8 @@ const Section1 = () => {
         <div className="text">
           <p className='overhead'>work of the church</p>
           <h1>We Preach The Gospel In Every Sermon</h1>
-          <p className='p1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed consequatur, natus dignissimos tempora ne.</p>
-          <p className='p2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, debitis pariatur quae quidem ratione consectetur dicta. Dolorum, eligendi? Asperiores ducimus perspiciatis doloribus natus ea molestiae dolores dignissimos recusandae similique tempora.</p>
+          <p className='p1'>Every message points to Jesus and invites people to trust God’s grace for everyday life.</p>
+          <p className='p2'>Join us for clear teaching, honest worship, and practical application that helps you grow in faith and follow Christ more fully.</p>
           {/* <button>ABout the church</button> */}
         </div>
 

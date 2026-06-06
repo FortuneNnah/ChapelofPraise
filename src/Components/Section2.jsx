@@ -5,16 +5,14 @@ const Section2 = () => {
     <div className="section2-container">
       <div className="section1-content">
         <div className="text">
-          <h1>We Praise God Without Steeze!</h1>
+          <h1>Worship That Honors God</h1>
           <p className="p1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed
-            consequatur, nats dignissimos tempora ne.
+            Our worship is heartfelt and reverent, offering praise to the Savior
+            with gratitude and joy.
           </p>
           <p className="p2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis,
-            debitis pariatur quae quidem ratione consectetur dicta. Dolorum,
-            eligendi? Asperiores ducimus perspiciatis doloribus natus ea
-            molestiae dolores dignissimos recusandae similique tempora.
+            Experience a place where music, prayer, and praise lift hearts toward
+            God and invite His presence into every service.
           </p>
         </div>
         <div className="imgs">
