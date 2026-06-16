@@ -2017,8 +2017,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.13);
   color: #7878a0;
@@ -2034,8 +2034,8 @@ section {
 }
 
 .social-btn svg {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
 }
 
 .footer-col-title {

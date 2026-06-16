@@ -1,4 +1,5 @@
 import React from "react";
+import TikTokIcon from "./TikTokIcon";
 
 const Footer = () => {
   return (
@@ -38,18 +39,9 @@ const Footer = () => {
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
-            {/* YouTube */}
-            <a href="#" className="social-btn" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95C23 15.87 23 12 23 12s0-3.87-.46-5.58z" />
-                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a1a2e" />
-              </svg>
-            </a>
-            {/* Twitter / X */}
-            <a href="#" className="social-btn" aria-label="Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-              </svg>
+            {/* TikTok */}
+            <a href="#" className="social-btn" aria-label="TikTok">
+              <TikTokIcon />
             </a>
           </div>
         </div>
