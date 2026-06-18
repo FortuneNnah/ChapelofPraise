@@ -137,9 +137,9 @@ export default function ContactUs() {
           </p>
           <div className="c-stats">
             {[
-              { num: "20+", label: "Years of Ministry"    },
-              { num: "3",  label: "Weekly Services"   },
-              { num: "24h", label: "Response Time" },
+              { num: "20+", label: "Years"    },
+              { num: "3",  label: "Weekly"   },
+              { num: "24h", label: "Response" },
             ].map((s) => (
               <div className="c-stat" key={s.label}>
                 <div className="c-stat-num">{s.num}</div>
@@ -214,7 +214,7 @@ export default function ContactUs() {
         </div>
 
         {submitted ? (
-          <div style={{ textAlign: "center", padding: "48px 0" }} role="status" aria-live="polite" aria-atomic="true">
+          <div style={{ textAlign: "center", padding: "48px 0" }}>
             <div style={{
               width: 56, height: 56, borderRadius: "50%",
               background: "rgba(18,18,42,0.06)",
@@ -238,45 +238,38 @@ export default function ContactUs() {
             <button
               className="submit-btn"
               onClick={() => { setSubmitted(false); setFormData({ firstName:"", lastName:"", email:"", phone:"", subject:"", message:"" }); }}
-              aria-label="Send another message"
             >
               Send another message
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} aria-label="Contact form">
+          <form onSubmit={handleSubmit}>
             <div className="form-grid">
               <div className="f-field">
-                <label htmlFor="firstName">First Name <span aria-label="required">*</span></label>
+                <label htmlFor="firstName">First Name</label>
                 <input
                   id="firstName" name="firstName" type="text"
                   placeholder="John"
                   value={formData.firstName} onChange={handleChange}
                   required
-                  aria-required="true"
-                  aria-label="First Name (required)"
                 />
               </div>
               <div className="f-field">
-                <label htmlFor="lastName">Last Name <span aria-label="required">*</span></label>
+                <label htmlFor="lastName">Last Name</label>
                 <input
                   id="lastName" name="lastName" type="text"
                   placeholder="Doe"
                   value={formData.lastName} onChange={handleChange}
                   required
-                  aria-required="true"
-                  aria-label="Last Name (required)"
                 />
               </div>
               <div className="f-field">
-                <label htmlFor="email">Email Address <span aria-label="required">*</span></label>
+                <label htmlFor="email">Email Address</label>
                 <input
                   id="email" name="email" type="email"
                   placeholder="you@example.com"
                   value={formData.email} onChange={handleChange}
                   required
-                  aria-required="true"
-                  aria-label="Email Address (required)"
                 />
               </div>
               <div className="f-field">
@@ -285,18 +278,15 @@ export default function ContactUs() {
                   id="phone" name="phone" type="tel"
                   placeholder="+234 800 000 0000"
                   value={formData.phone} onChange={handleChange}
-                  aria-label="Phone number (optional)"
                 />
               </div>
               <div className="f-field full">
-                <label htmlFor="subject">Subject <span aria-label="required">*</span></label>
+                <label htmlFor="subject">Subject</label>
                 <div className="f-select-wrap">
                   <select
                     id="subject" name="subject"
                     value={formData.subject} onChange={handleChange}
                     required
-                    aria-required="true"
-                    aria-label="Subject (required) - select a topic"
                   >
                     <option value="" disabled>Select a topic…</option>
                     {subjectOptions.map((opt) => (
@@ -307,14 +297,12 @@ export default function ContactUs() {
                 </div>
               </div>
               <div className="f-field full">
-                <label htmlFor="message">Message <span aria-label="required">*</span></label>
+                <label htmlFor="message">Message</label>
                 <textarea
                   id="message" name="message"
                   placeholder="Write your message here…"
                   value={formData.message} onChange={handleChange}
                   required
-                  aria-required="true"
-                  aria-label="Your message (required)"
                 />
               </div>
             </div>
@@ -324,7 +312,7 @@ export default function ContactUs() {
                 <i className="ti ti-lock" aria-hidden="true" />
                 Your message is private and secure.
               </div>
-              <button className="submit-btn" type="submit" aria-label="Send message to Chapel Of Praise">
+              <button className="submit-btn" type="submit">
                 Send Message
                 <i className="ti ti-arrow-right" aria-hidden="true" />
               </button>
