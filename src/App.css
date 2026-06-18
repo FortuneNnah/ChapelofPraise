@@ -719,7 +719,8 @@ h2 {
 
 .value-card {
   background: white;
-  border: 1px solid var(--border);
+  /* border: 1px solid #333; */
+  box-shadow: 0 20px 40px rgba(15, 23, 42, .14);
   border-radius: 24px;
   padding: 36px;
   transition: .3s ease;
@@ -758,6 +759,7 @@ h2 {
 
 .mission-card {
   border-radius: 32px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, .14);
   padding: 50px;
   position: relative;
   overflow: hidden;
@@ -791,8 +793,8 @@ h2 {
 }
 
 .light {
-  background: white;
-  border: 1px solid var(--border);
+  background: #f1f1f1;
+  /* border: 1px solid var(--border); */
 }
 
 /* LEADERS */
@@ -808,24 +810,25 @@ h2 {
 }
 
 .leader-card {
-  background: var(--bg);
+  background-color: #f1f1f1;
   border-radius: 28px;
   padding: 40px;
   text-align: center;
-  border: 1px solid transparent;
+  box-shadow: 0 40px 40px rgba(15, 23, 42, .09);
+  /* border: 1px solid #555; */
   transition: .3s ease;
 }
 
 .leader-card:hover {
-  border-color: var(--border);
-  transform: translateY(-6px);
+  /* border-color: #555; */
+  transform: translateY(-4px);
 }
 
 .leader-avatar {
   width: 90px;
   height: 90px;
-  background: var(--dark);
-  color: white;
+  background: #fff;
+  color: #0068d6;
   border-radius: 50%;
   display: flex;
   align-items: center;

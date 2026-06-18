@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
 const images = [
-  { src: "/imgs/slide9.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide2.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide3.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide4.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide5.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide6.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide7.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/slide2.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/praise3.jpg", caption: "Sunday Worship Service" },
-  { src: "/imgs/praise3.jpg", caption: "Sunday Worship Service" },
-  
+  { src: "/imgs/slide9.jpg", caption: "Vibrant Sunday worship with the full congregation united in praise" },
+  { src: "/imgs/slide2.jpg", caption: "Choir leading contemporary worship during Sunday service" },
+  { src: "/imgs/slide3.jpg", caption: "Young adults worshipping with hands raised in devotion" },
+  { src: "/imgs/slide4.jpg", caption: "Church family gathered for prayer and intercession" },
+  { src: "/imgs/slide5.jpg", caption: "Musicians performing during weekend worship celebration" },
+  { src: "/imgs/slide6.jpg", caption: "Community service and outreach initiative in action" },
+  { src: "/imgs/slide7.jpg", caption: "Fellowship time with church members after service" },
+  { src: "/imgs/slide2.jpg", caption: "Baptism and dedication ceremony at Chapel Of Praise" },
+  { src: "/imgs/praise3.jpg", caption: "Youth group during special events and programs" },
+  { src: "/imgs/praise3.jpg", caption: "Prayer vigil with members in deep intercession" },
 ];
 
 const Gallery = () => {
@@ -43,19 +42,20 @@ const Gallery = () => {
       className="gallery-section"
       onKeyDown={handleKeyDown}
       tabIndex={-1}
+      aria-label="Photo gallery of Chapel Of Praise events and services"
     >
       {/* Section heading */}
       <div className="gallery-heading">
         <span className="overhead">Our Moments</span>
         <h1>Life at Chapel Of Praise</h1>
         <p className="gallery-sub">
-          A glimpse into our vibrant church life — worship, fellowship, and
-          service.
+          A glimpse into our vibrant church life — worship, fellowship, service, and 
+          the many ways God is working through our community.
         </p>
       </div>
 
       {/* Grid */}
-      <div className="gallery-grid">
+      <div className="gallery-grid" role="region" aria-label="Photo gallery grid">
         {images.map((img, index) => (
           <div
             key={index}
@@ -63,7 +63,7 @@ const Gallery = () => {
             onClick={() => openLightbox(index)}
             role="button"
             tabIndex={0}
-            aria-label={`View ${img.caption}`}
+            aria-label={`View full image: ${img.caption}`}
             onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
           >
             <img src={img.src} alt={img.caption} loading="lazy" />
@@ -77,6 +77,7 @@ const Gallery = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                aria-hidden="true"
               >
                 <polyline points="15 3 21 3 21 9" />
                 <polyline points="9 21 3 21 3 15" />

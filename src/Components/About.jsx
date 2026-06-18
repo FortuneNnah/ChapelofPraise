@@ -4,23 +4,23 @@ import Footer from "./Footer";
 const values = [
   {
     title: "Faith",
-    text: "Everything we do is rooted in the Word of God and centered on Christ.",
+    text: "Everything we do is rooted in the Word of God and centered on Christ. We believe Scripture is living and active, transforming hearts and minds daily.",
   },
   {
     title: "Family",
-    text: "We believe growth happens best in a loving and authentic church family.",
+    text: "We believe growth happens best in a loving and authentic church family. We're committed to walking alongside each other through every season of life.",
   },
   {
     title: "Worship",
-    text: "We create an atmosphere where people can genuinely encounter God.",
+    text: "We create an atmosphere where people can genuinely encounter God through heartfelt praise, prayer, and reverence. Worship isn't just a service style—it's our lifestyle.",
   },
   {
     title: "Impact",
-    text: "We are committed to transforming lives within and beyond the church.",
+    text: "We are committed to transforming lives within and beyond the church through evangelism, discipleship, and community outreach.",
   },
   {
     title: "Fellowship",
-    text: "We value authentic relationships and intentional church fellowship.",
+    text: "We value authentic relationships and intentional church fellowship. True connection happens through small groups, events, and genuine community.",
   }
 ];
 
@@ -29,21 +29,25 @@ const leaders = [
     initials: "GU",
     name: "Rev. G. George Udoh",
     role: "Senior Pastor",
+    bio: "With over 20 years of ministry experience, Rev. Udoh provides visionary leadership and pastoral care to our church family.",
   },
   {
     initials: "OU",
     name: "Rev. Mama Otobong Umoren",
     role: "Chaplain",
+    bio: "A dedicated spiritual counselor who ministers to the pastoral and spiritual needs of our congregation and campus community.",
   },
   {
     initials: "DS",
     name: "Daniel Sunday Umoh",
     role: "Chapel Representative",
+    bio: "A faithful servant who coordinates chapel activities and ensures effective ministry communication across all units.",
   },
   {
     initials: "AK",
     name: "Angela Kuffrey",
-    role: "Ass. Chapel Representative"
+    role: "Assistant Chapel Representative",
+    bio: "A dedicated team member supporting chapel operations and fostering community engagement across our ministries."
   }
 ];
 
@@ -148,7 +152,7 @@ export default function AboutUs() {
 
       {/* MISSION */}
       <section className="mission-section">
-        <div className="mission-card dark">
+        <div className="mission-card light">
           <span>01</span>
 
           <h3>Our Mission</h3>

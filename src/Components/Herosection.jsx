@@ -64,13 +64,27 @@ export const Header = () => {
 
 export const Hero = () => {
   return (
-    <div id="Home" className="Hero-section">
+    <section id="Home" className="Hero-section" aria-label="Welcome to Chapel Of Praise">
       <div className="overlay"></div>
       <div className="Hero-container">
         <h1>Welcome to Chapel Of Praise</h1>
-        <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
+        <p>A thriving community of faith dedicated to worship, spiritual growth, and servant-hearted service. Whether you're searching for meaning, seeking a faith community, or looking to deepen your walk with Christ, Chapel Of Praise welcomes you with open hearts.</p>
+        <div className="hero-cta" role="group" aria-label="Call to action buttons">
+          <button className="cta-btn cta-btn--primary" aria-label="Join us for Sunday worship at 8:00 AM or 10:30 AM">Join Us This Sunday</button>
+          <button className="cta-btn cta-btn--secondary" aria-label="Learn more about Chapel Of Praise">Learn More</button>
+        </div>
+        <div className="hero-info" role="region" aria-label="Service times">
+          <div className="hero-info-item">
+            <span className="info-label">Sunday Worship</span>
+            <span className="info-value">8:00 AM & 10:30 AM</span>
+          </div>
+          <div className="hero-info-item">
+            <span className="info-label">Location</span>
+            <span className="info-value">Pav 2, Akwa Ibom State University</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
