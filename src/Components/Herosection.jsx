@@ -57,7 +57,7 @@ export const Header = () => {
       </ul>
 
       {/* Join Us — hidden on mobile, visible on desktop via CSS */}
-      <button className="herobtn">Connect With Us</button>
+      {/* <button className="herobtn">Connect With Us</button> */}
     </div>
   );
 };
@@ -67,8 +67,11 @@ export const Hero = () => {
     <div id="Home" className="Hero-section">
       <div className="overlay"></div>
       <div className="Hero-container">
-        <h1>Welcome to Chapel Of Praise</h1>
+        <h1>The Biggest Family On Campus</h1>
         <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
+        <div className="">
+          <button className="herobtn">Connect With Us</button>
+        </div>
       </div>
     </div>
   );
