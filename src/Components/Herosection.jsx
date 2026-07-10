@@ -37,7 +37,6 @@ export const Header = () => {
         <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
       </button>
 
-      {/* Nav links */}
       <ul className={`navlinks ${isMenuOpen ? "mobile-menu-open" : ""}`}>
         <li>
           <NavLink to="/" onClick={closeMenu} className={({ isActive }) => (isActive ? "active" : "")}>Home</NavLink>
@@ -56,7 +55,6 @@ export const Header = () => {
         </li>
       </ul>
 
-      {/* Join Us — hidden on mobile, visible on desktop via CSS */}
       <button className="herobtn">Connect With Us</button>
     </div>
   );
