@@ -14,11 +14,11 @@ export const Header = () => {
   };
 
   const closeMenu = () => {
-    if(isMenuOpen) {
+    if (isMenuOpen) {
       setIsMenuOpen(false)
     }
   }
-  
+
   return (
     <div className="Header-container">
       <div className="logo">
@@ -63,10 +63,15 @@ export const Hero = () => {
     <div id="Home" className="Hero-section">
       <div className="overlay"></div>
       <div className="Hero-container">
-        <h1>The Biggest Family On Campus</h1>
+        <h1 style={{
+          "fontSize" : "14px",
+          "font-style" :"italic",
+          }}>Welcome to Chapel Of Praise</h1>
+        <h2>The Biggest Family On Campus</h2>
         <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
-        <div className="">
+        <div className="herobtn-container">
           <button className="herobtn">Connect With Us</button>
+          <button className="herobtn">Join a Service</button>
         </div>
       </div>
     </div>
@@ -75,13 +80,13 @@ export const Hero = () => {
 
 
 const Herosection = () => {
-  return(
+  return (
     <>
-    <Hero />
-    <Section1 />
-    <Section2 />
-    <Section3 />
-    <Gallery />
+      <Hero />
+      <Section1 />
+      <Section2 />
+      <Section3 />
+      <Gallery />
     </>
   );
 };
