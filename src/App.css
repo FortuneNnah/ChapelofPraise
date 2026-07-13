@@ -1701,7 +1701,6 @@ section {
   padding: 52px 20px 60px;
 }
 
-/* Mobile: stacked column */
 .section1-content {
   display: flex;
   flex-direction: column;
