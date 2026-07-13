@@ -4,8 +4,12 @@ const Section2 = () => {
   return (
     <div className="section2-container">
       <div className="section1-content">
+        <div className="imgs">
+          <img className="img1" src="/imgs/praise1.jpg" alt="" />
+          <img className="img2" src="/imgs/praise7.jpg" alt="" />
+        </div>
         <div className="text">
-          <h1>Worship That Honors God</h1>
+          <h1>1. Worship That Honors God</h1>
           <p className="p1">
             Our worship is heartfelt and reverent, offering praise to the Savior
             with gratitude and joy.
@@ -15,9 +19,8 @@ const Section2 = () => {
             God and invite His presence into every service.
           </p>
         </div>
-        <div className="imgs">
-          <img className="img1" src="/imgs/praise1.jpg" alt="" />
-          <img className="img2" src="/imgs/praise7.jpg" alt="" />
+        <div className="text-2">
+          <h3>Why we are the biggest family on campus?</h3>
         </div>
       </div>
     </div>

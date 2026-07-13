@@ -9,7 +9,7 @@ const Section3 = () => {
           <img className="img2" src="/imgs/praise2.jpg" alt="" />
         </div>
         <div className="text">
-          <h1>A Place to Encounter God</h1>
+          <h1>2. A Place to Encounter God</h1>
           <p className="p1">
             Every gathering is designed to help you meet God, be encouraged in
             your walk, and connect with others who share your faith.

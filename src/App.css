@@ -71,27 +71,6 @@ textarea {
   gap: 12px;
 }
 
-.herobtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 22px;
-  background: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: background 0.3s ease;
-}
-
-.herobtn:hover {
-  background: #0465cc;
-}
-
 @media (max-width: 767px) {
   .Header-container .herobtn {
     display: none;
@@ -192,7 +171,7 @@ textarea {
    HERO
    ============================================================ */
 .Hero-section {
-  background-image: url('src/assets/congregation.jpg');
+  background-image: url('/imgs/congregation.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -243,23 +222,25 @@ textarea {
   max-width: 520px;
 }
 
-.hero-cta {
-  margin-top: 8px;
-  padding: 12px 32px;
+.herobtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
   background: #007BFF;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  transition: background 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+  transition: background 0.3s ease;
 }
 
-.hero-cta:hover {
+.herobtn:hover {
   background: #0465cc;
-  transform: translateY(-2px);
 }
 
 /* ============================================================
@@ -1632,6 +1613,11 @@ section {
 
 /* ── 600px ── */
 @media (max-width: 600px) {
+  .Hero-section {
+    min-height: 80vh;
+    padding: 72px 16px 40px;
+  }
+
   .contact-hero h1 {
     font-size: 34px;
   }
@@ -1709,7 +1695,7 @@ section {
 }
 
 @media (max-width: 899px) {
-  .section1-content {
+  .section1-content{
     flex-direction: column-reverse;
   }
 }
