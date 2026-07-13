@@ -66,6 +66,11 @@ textarea {
   height: auto;
 }
 
+.herobtn-container {
+  display: flex;
+  gap: 12px;
+}
+
 .herobtn {
   display: inline-flex;
   align-items: center;
@@ -187,19 +192,21 @@ textarea {
    HERO
    ============================================================ */
 .Hero-section {
-  background-image: url('/imgs/praise7.jpg');
+  background-image: url('src/assets/congregation.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
   position: relative;
   width: 100%;
-  min-height: 100svh;
+  min-height: 90vh;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 80px 20px 48px;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .overlay {
@@ -265,7 +272,7 @@ textarea {
 
 
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
   background: #0f172a;
   position: relative;
   display: flex;
@@ -1668,6 +1675,10 @@ section {
   padding-top: 4px;
 }
 
+.hero-buttons{
+  gap: 12px;
+}
+
 .section1-content .text .section1-actions .herobtn {
   display: inline-flex;
   align-items: center;
@@ -1698,6 +1709,12 @@ section {
   gap: 48px;
 }
 
+@media (max-width: 899px) {
+  .section1-content {
+    flex-direction: column-reverse;
+  }
+}
+
 .section1-content .text {
   display: flex;
   flex-direction: column;
@@ -1712,6 +1729,7 @@ section {
   color: #007BFF;
   font-weight: 600;
   text-transform: uppercase;
+  text-align: left;
   letter-spacing: 2px;
   margin: 0 0 8px;
   line-height: 1.2;
@@ -1721,6 +1739,7 @@ section {
   font-size: clamp(1.3rem, 5vw, 2rem);
   padding: 10px 0;
   line-height: 1.25;
+  text-align: left;
 }
 
 .text .p1 {
@@ -1773,7 +1792,7 @@ section {
 .imgs .img3 {
   position: relative;
   width: 360px;
-  height: 390px;
+  height: 400px;
   z-index: 3;
   border-radius: 12px;
   object-fit: cover;
@@ -2389,10 +2408,10 @@ section {
 
   .imgs .img3 {
     position: relative;
-    top: 10px;
+    top: 0;
     left: 0;
-    width: 280px;
-    height: 310px;
+    width: 300px;
+    height: 340px;
     z-index: 3;
     border-radius: 12px;
     object-fit: cover;
