@@ -1614,7 +1614,7 @@ section {
 /* ── 600px ── */
 @media (max-width: 600px) {
   .Hero-section {
-    min-height: 70vh;
+    min-height: 80vh;
     padding: 72px 16px 40px;
   }
 
@@ -1695,7 +1695,7 @@ section {
 }
 
 @media (max-width: 899px) {
-  .section1-content {
+  .section1-content{
     flex-direction: column-reverse;
   }
 }
