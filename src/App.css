@@ -171,7 +171,7 @@ textarea {
    HERO
    ============================================================ */
 .Hero-section {
-  background-image: url('imgs/congregation.jpg');
+  background-image: url('/src/assets/congregation.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1614,7 +1614,7 @@ section {
 /* ── 600px ── */
 @media (max-width: 600px) {
   .Hero-section {
-    min-height: 80vh;
+    min-height: 90vh;
     padding: 72px 16px 40px;
   }
 

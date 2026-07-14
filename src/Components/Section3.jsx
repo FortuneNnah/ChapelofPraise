@@ -21,8 +21,8 @@ const Section3 = () => {
         </div>
 
         <div className="section3-gallery">
-          <img src="/imgs/worship1.jpg" alt="Worship gathering" />
-          <img src="/imgs/praise2.jpg" alt="Prayer and fellowship" />
+          <img src="/imgs/slide4.jpg" alt="Worship gathering" />
+          <img src="/imgs/slide3.jpg" alt="Prayer and fellowship" />
           <img src="/imgs/praise7.jpg" alt="Campus fellowship" />
         </div>
       </div>
