@@ -11,6 +11,7 @@ const Section1 = () => {
           <p className='overhead'>Meet our Chaplain</p>
           <h1>Rev. Mrs. Otobong Umoren</h1>
           <p className='p1'>Rev. Mrs. Otobong Umoren has been the chaplain of our church for several years, bringing wisdom, compassion, and spiritual guidance to our community.</p>
+          <p className='p1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam numquam, consectetur molestias omnis alias distinctio iure tenetur, aperiam suscipit quam amet reiciendis adipisci quo accusamus quia quis et in voluptates.</p>
           <p className='p2'>Join us for clear teaching, honest worship, and practical application that helps you grow in faith and follow Christ more fully.</p>
           {/* <div className="section1-actions">
             <button onClick={() => {
