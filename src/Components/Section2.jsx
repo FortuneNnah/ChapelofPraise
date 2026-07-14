@@ -14,23 +14,23 @@ const Section2 = () => {
         <div className="section2-content">
           <p className="section2-kicker">A family united by faith</p>
           <h2>Worship that lifts, teaches, and strengthens.</h2>
-          <p className="section2-copy">
-            We gather in joyful worship, grow through sound teaching, and build lasting
-            relationships that carry us through every season of life.
-          </p>
+          <p className='p2'>Join us for clear teaching, honest worship, and practical application that helps you grow in faith and follow Christ more fully.</p>
 
           <div className="section2-highlights">
             <div className="highlight-card">
-              <strong>Weekly</strong>
-              <span>Spirit-filled gatherings</span>
+              <strong>Sundays</strong>
+              <span>Sunday Service</span>
+              <span className="timestamp">8am & 10am</span>
             </div>
             <div className="highlight-card">
-              <strong>Campus</strong>
-              <span>Wide community presence</span>
+              <strong>Tuesdays</strong>
+              <span>Bible Study</span>
+              <span className="timestamp">6pm</span>
             </div>
             <div className="highlight-card">
-              <strong>Life</strong>
-              <span>Rooted in purpose and fellowship</span>
+              <strong>Fridays</strong>
+              <span>Miracle Service</span>
+              <span className="timestamp">6pm</span>
             </div>
           </div>
 

@@ -3,21 +3,27 @@ import React from "react";
 const Section3 = () => {
   return (
     <div className="section3-container">
-      <div className="section1-content">
-        <div className="imgs">
-          <img className="img1" src="/imgs/worship1.jpg" alt="" />
-          <img className="img2" src="/imgs/praise2.jpg" alt="" />
+      <div className="section3-showcase">
+        <div className="section3-panel">
+          <p className="section3-kicker">A place to encounter God</p>
+          <h2>Come as you are, and leave strengthened.</h2>
+          <p className="section3-copy">
+            We create space for prayer, worship, and honest encouragement so every
+            person can experience God’s presence and find hope in community.
+          </p>
+
+          <div className="section3-badges">
+            <span>Prayer</span>
+            <span>Worship</span>
+            <span>Teaching</span>
+            <span>Community</span>
+          </div>
         </div>
-        <div className="text">
-          <h1>2. A Place to Encounter God</h1>
-          <p className="p1">
-            Every gathering is designed to help you meet God, be encouraged in
-            your walk, and connect with others who share your faith.
-          </p>
-          <p className="p2">
-            From worship to teaching, we seek to create meaningful moments that
-            strengthen your relationship with Christ and inspire spiritual growth.
-          </p>
+
+        <div className="section3-gallery">
+          <img src="/imgs/worship1.jpg" alt="Worship gathering" />
+          <img src="/imgs/praise2.jpg" alt="Prayer and fellowship" />
+          <img src="/imgs/praise7.jpg" alt="Campus fellowship" />
         </div>
       </div>
     </div>
