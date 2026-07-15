@@ -11,13 +11,6 @@ const Section3 = () => {
             We create space for prayer, worship, and honest encouragement so every
             person can experience God’s presence and find hope in community.
           </p>
-
-          <div className="section3-badges">
-            <span>Prayer</span>
-            <span>Worship</span>
-            <span>Teaching</span>
-            <span>Community</span>
-          </div>
         </div>
 
         <div className="section3-gallery">
