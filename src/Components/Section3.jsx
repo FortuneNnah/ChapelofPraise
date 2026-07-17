@@ -6,7 +6,7 @@ const Section3 = () => {
       <div className="section3-showcase">
         <div className="section3-panel">
           <p className="section3-kicker">A place to encounter God</p>
-          <h2>Come as you are, and leave strengthened.</h2>
+          <h2>Worship that lifts, teaches, and strengthens</h2>
           <p className="section3-copy">
             We create space for prayer, worship, and honest encouragement so every
             person can experience God’s presence and find hope in community.

@@ -13,7 +13,7 @@ const Section2 = () => {
 
         <div className="section2-content">
           <p className="section2-kicker">WE ARE A family united by faith</p>
-          <h2>Worship that lifts, teaches, and strengthens.</h2>
+          <h2> A family, a community that helps you grow </h2>
           <p className='p2'>Join us for clear teaching, honest worship, and practical application that helps you grow in faith and follow Christ more fully.</p>
 
           <div className="section2-highlights">
