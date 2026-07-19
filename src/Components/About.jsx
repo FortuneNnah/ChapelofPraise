@@ -55,8 +55,6 @@ export default function AboutUs() {
         <div className="hero-bg" />
 
         <div className="hero-content">
-          <span className="hero-label">The Biggest Family on Campus</span>
-
           <h1>
             Building people.
             <br />

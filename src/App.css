@@ -34,6 +34,168 @@ textarea {
 }
 
 /* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+/* Floating animation — for standalone/featured images (hero image
+   stacks, section images, gallery photos). Larger, slower drift. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Floating animation — for repeated grid items and small icon/avatar
+   graphics (unit, leader & modal avatars, contact icons, gallery
+   tiles). Smaller amplitude so a full grid doesn't feel chaotic. */
+@keyframes floatSubtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Fade-in-up — plays once as an element scrolls into the viewport.
+   Driven entirely by animation-timeline: view() below, so no
+   IntersectionObserver / JS is needed to trigger it. In browsers
+   that don't yet support scroll-driven animations, the unknown
+   animation-timeline value is ignored and the element simply fades
+   in on page load instead — it never gets stuck hidden. */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating images — hero image stacks & section photography */
+.imgs .img1,
+.imgs .img2,
+.imgs .img3,
+.section2-main-image,
+.section2-side-image,
+.section3-gallery img {
+  animation: float 4.5s ease-in-out infinite;
+}
+
+/* Stagger the stacked images so they don't bob in unison */
+.imgs .img2 {
+  animation-delay: -1.5s;
+}
+
+.imgs .img3 {
+  animation-delay: -3s;
+}
+
+.section2-side-image {
+  animation-delay: -2s;
+}
+
+/* Floating icons/avatars — units, leaders, modal, contact & gallery */
+.unit-avatar,
+.leader-avatar,
+.modal-avatar,
+.cc-icon,
+.gallery-item {
+  animation: floatSubtle 3.6s ease-in-out infinite;
+}
+
+.unit-card:nth-child(2n) .unit-avatar {
+  animation-delay: -1.2s;
+}
+
+.unit-card:nth-child(3n) .unit-avatar {
+  animation-delay: -2.4s;
+}
+
+.leader-card:nth-child(2) .leader-avatar {
+  animation-delay: -1.2s;
+}
+
+.leader-card:nth-child(3) .leader-avatar {
+  animation-delay: -2.4s;
+}
+
+.gallery-item:nth-child(2n) {
+  animation-delay: -1.2s;
+}
+
+.gallery-item:nth-child(3n) {
+  animation-delay: -2.4s;
+}
+
+/* Fade-in-on-view — headings & eyebrow/tag text (all 3 hero sections
+   included: Hero-section, about .hero, .contact-hero) */
+h1,
+h2,
+.section-tag,
+.hero-label,
+.c-tag,
+.overhead,
+.section2-kicker,
+.section3-kicker,
+.unit-chip,
+.value-card h3,
+.mission-card h3,
+.leader-card h3 {
+  animation: fadeInUp 0.9s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+/* Fade-in-on-view — body copy, descriptions & supporting text */
+.Hero-section p,
+.hero p,
+.about-text p,
+.section-header p,
+.units-intro,
+.units-banner p,
+.unit-desc,
+.unit-leader,
+.value-card p,
+.mission-card p,
+.leader-card span,
+.service-item p,
+.service-item span,
+.text .p1,
+.text .p2,
+.section2-copy,
+.section2-content .p2,
+.highlight-card strong,
+.highlight-card span,
+.section2-quote p,
+.section3-copy,
+.section3-badges span,
+.gallery-sub,
+.c-hero-desc,
+.c-tagline,
+.cc-value,
+.cc-sub,
+.schedule-intro,
+.sched-day,
+.sched-name,
+.map-placeholder-text,
+.form-intro,
+.footer-quote p,
+.hero-card > div,
+.hero-card span {
+  animation: fadeInUp 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 45%;
+}
+
+/* ============================================================
    HEADER
    ============================================================ */
 .Header-container {
@@ -214,6 +376,10 @@ textarea {
   color: #fff;
 }
 
+.Hero-section h2{
+  font-size: 3.6rem;
+}
+
 .Hero-section p {
   font-size: clamp(0.85rem, 3vw, 1rem);
   line-height: 1.65;
@@ -266,29 +432,12 @@ textarea {
 
 .hero-bg {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at top right, rgba(255, 255, 255, .08), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(255, 255, 255, .05), transparent 25%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 650px;
-}
-
-.hero-label {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, .1);
-  background: rgba(255, 255, 255, .04);
-  color: rgba(255, 255, 255, .7);
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
 }
 
 .hero h1 {
@@ -1609,6 +1758,15 @@ section {
     width: 100%;
     justify-content: center;
   }
+
+  .unit-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .unit-actions {
+    width: 100%;
+  }
 }
 
 /* ── 600px ── */
@@ -1683,8 +1841,9 @@ section {
 
 .section2-container {
   width: 100%;
-  background-color: #d4d3d3;
+  background-color: #e2e2e2;
   padding: 52px 20px 60px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .section2-layout {
@@ -2621,17 +2780,6 @@ section {
 
   .modal-actions {
     flex-direction: column;
-  }
-}
-
-@media (max-width: 900px) {
-  .unit-card-footer {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .unit-actions {
-    width: 100%;
   }
 }
 
