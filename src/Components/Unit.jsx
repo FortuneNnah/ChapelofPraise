@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 const units = [
-  { id: 1, name: "Worship & Music", leader: "Elder Grace", desc: "Leads worship and coordinates music ministry. Meets weekly to rehearse and worship together." },
-  { id: 2, name: "Technical", leader: "Deacon Michael", desc: "Support worship services, sound, lighting, and broadcasting for services and special events." },
-  { id: 3, name: "Evangelism", leader: "Youth Pastor", desc: "Programs and discipleship for teens and young adults — events, small groups and mentorship." },
-  { id: 4, name: "Ushering", leader: "Children's Pastor", desc: "Safe, creative ministry for kids with age-appropriate teaching and activities." },
-  { id: 5, name: "Prayer Band", leader: "Prayer Coordinator", desc: "Intercessory prayer teams, emergency prayer support and prayer events." },
-  { id: 6, name: "Sanctuary", leader: "Hospitality Lead", desc: "Welcoming newcomers, serving refreshments, and creating a hospitable church environment." },
-  { id: 7, name: "Sunday school", leader: "Small Groups Lead", desc: "Life groups, mentorship and courses to help people grow in faith." },
-  { id: 8, name: "Media", leader: "Media Team Lead", desc: "Streaming, recording and creative media for services, events and social presence." },
-  { id: 9, name: "Drama", leader: "Missions Director", desc: "Local and international mission initiatives focused on outreach and partnership." },
-  { id: 10, name: "Decoration", leader: "Office Manager", desc: "Operations, scheduling, volunteer coordination and administrative support." },
-  { id: 11, name: "Moderating", leader: "Volunteer Lead", desc: "Partnerships with schools and family services to serve children in the neighbourhood." },
+  { id: 1, name: "Choir Unit", leader: "Israel Eminue", desc: "Leads worship and coordinates music ministry. Meets weekly to rehearse and worship together." },
+  { id: 2, name: "Technical Unit", leader: "Marvellous Garuba", desc: "Support worship services, sound, lighting, and broadcasting for services and special events." },
+  { id: 3, name: "Evangelism", leader: "God'spwer Jedidiah", desc: "Programs and discipleship for teens and young adults — events, small groups and mentorship." },
+  { id: 4, name: "Ushering", leader: "Abese Emmanuel", desc: "Safe, creative ministry for kids with age-appropriate teaching and activities." },
+  { id: 5, name: "Prayer Band", leader: "Olosunde Daniel", desc: "Intercessory prayer teams, emergency prayer support and prayer events." },
+  { id: 6, name: "Sanctuary", leader: "Lawrence", desc: "Responsible for keepign the church environment serene and creating a hospitable church environment." },
+  { id: 7, name: "Sunday school", leader: "Ifiok Udoma", desc: "Life groups, mentorship and courses to help people grow in faith." },
+  { id: 8, name: "Media", leader: "Godson Etiuwem", desc: "Streaming, recording and creative media for services, events and social presence." },
+  { id: 9, name: "Drama", leader: "Ubong Ekarika", desc: "Local and international mission initiatives focused on outreach and partnership." },
+  { id: 10, name: "Decoration", leader: "Akpan Iyeneobong", desc: "Operations, scheduling, volunteer coordination and administrative support." },
+  { id: 11, name: "Moderating", leader: "Israel", desc: "Partnerships with schools and family services to serve children in the neighbourhood." },
   { id: 12, name: "Information ", leader: "Finance Lead", desc: "Financial stewardship, training and responsible giving support." },
 ];
 

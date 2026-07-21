@@ -13,13 +13,13 @@ const Section2 = () => {
 
         <div className="section2-content">
           <p className="section2-kicker">WE ARE A family united by faith</p>
-          <h2> A family, a community that helps you grow </h2>
+          <h2> A family, a community that helps you grow. </h2>
           <p className='p2'>Join us for clear teaching, honest worship, and practical application that helps you grow in faith and follow Christ more fully.</p>
 
           <div className="section2-highlights">
             <div className="highlight-card">
               <strong>Sundays</strong>
-              <span>Sunday Service</span>
+              <span>Divine Service</span>
               <span className="timestamp">8am & 10am</span>
             </div>
             <div className="highlight-card">
