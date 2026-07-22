@@ -65,7 +65,7 @@ export const Hero = () => {
       <div className="Hero-container">
         <h1 style={{
           "fontSize" : "14px",
-          "font-style" :"italic",
+          "fontStyle" :"italic",
           }}>Welcome to Chapel Of Praise</h1>
         <h2>The Biggest Family On Campus</h2>
         <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CircularGallery from "./CircularGallery";
 
 const images = [
@@ -16,6 +16,17 @@ const images = [
 ];
 
 const Gallery = () => {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
@@ -35,10 +46,10 @@ const Gallery = () => {
       <div className="circular-gallery-wrapper">
         <CircularGallery
           items={images.map((img) => ({ image: img.src }))}
-          bend={3}
+          bend={isMobile ? 1.2 : 3}
           textColor="#ffffff"
           borderRadius={0.05}
-          scrollEase={0.02}
+          scrollEase={isMobile ? 0.03 : 0.02}
           fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
           font="bold 30px Orbitron"
         />
