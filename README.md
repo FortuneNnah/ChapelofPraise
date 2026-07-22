@@ -1,58 +1,90 @@
-# Chapel
+# Chapel Of Praise
 
-Chapel is a landing website for a community or church-focused web experience. The project brings together a welcoming hero page, community details, event information, sermon highlights, media gallery content, and a contact section.
+A modern, responsive church website built to serve as the digital home for a vibrant campus community. It presents essential information — service times, ministries, upcoming events, and contact details — in a clean, welcoming layout that works beautifully on any device.
 
-## What this project includes
-- Hero landing section to welcome visitors
-- About page for mission or community description
-- Contact page for communication and inquiries
-- Units page for groups, ministries, or offerings
-- Sermons page for teaching and message highlights
-- Events page for upcoming gatherings
-- Gallery page for photos and featured visual content
-- Footer with navigation and site-level links
+---
 
-## Project purpose
-This website is designed to serve as a digital front door for a chapel or community ministry. It focuses on:
-- presenting essential information clearly
-- providing easy navigation between sections
-- supporting a range of content types including text, images, and contact details
-- making the site easy to extend with new pages and components
+## Usage
 
-## Key files and structure
-- `src/App.jsx` — app routing and component layout
-- `src/Components/Herosection.jsx` — homepage hero content
-- `src/Components/About.jsx` — about page content
-- `src/Components/Contact.jsx` — contact page content
-- `src/Components/Unit.jsx` — units or ministry page
-- `src/Components/Section2.jsx` — sermons content
-- `src/Components/Section3.jsx` — events content
-- `src/Components/Gallery.jsx` — gallery view
-- `src/Components/Footer.jsx` — footer and navigation links
-- `public/imgs` — static assets for page imagery
-
-## Getting started
-Install dependencies and run the app locally:
+Running the project locally is straightforward. First clone the repository and install the dependencies:
 
 ```bash
+git clone https://github.com/FortuneNnah/ChapelofPraise.git
+cd ChapelofPraise
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-## Useful scripts
-- `npm run dev` — start local development
-- `npm run build` — build production assets
-- `npm run preview` — preview the production build
-- `npm run lint` — lint the source code
+Open your browser to the URL shown in the terminal (usually `http://localhost:5173`). From there you can navigate through all the sections — explore the home page, about us, units, sermons, events, gallery, and contact page.
 
-## Notes
-- The site is structured with routed sections, making it easy to add new pages and navigation entries.
-- Static images and media can be placed in `public/imgs` for gallery and hero content.
-- The current focus is on content layout and navigation, so the design can be customized around brand or ministry needs.
+To create an optimized production build:
 
-## Next steps
-- Add real content and messaging for the chapel/community
-- Replace placeholder images with actual media
-- Expand the About, Events, and Sermons sections with richer details
-- Add accessibility and SEO improvements for better visitor experience
+```bash
+npm run build
+```
 
+Then preview the production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## Features
+
+- **Multi‑page architecture with React Router** — clean, bookmarkable URLs for each section (Home, About, Units, Sermons, Events, Gallery, Contact).
+- **Engaging hero section** — full‑viewport background image, overlay, and call‑to‑action buttons.
+- **About page** with mission, vision, leadership profiles, service times, and a stats card (years of ministry, lives impacted, weekly services).
+- **Units/Ministry listing** — 12 ministries displayed as interactive cards; clicking any card opens a modal with detailed information and a “Join this unit” action.
+- **Sermons section** — visually stacked images, highlights for service days, and a featured quote.
+- **Events section** — a content panel paired with a three‑image gallery.
+- **Interactive circular gallery** — a 3D carousel built with WebGL (OGL) that you can drag, scroll, or navigate via keyboard. Displays church life photos with smooth animations and a responsive bend effect.
+- **Contact page** — hero stats, location details, service schedule, map placeholder, and a complete contact form with a success state.
+- **Footer** — scripture quote, social media links (Facebook, Instagram, TikTok), quick links, service times, contact info, and a newsletter subscription form.
+- **Sticky header with hamburger menu** — fully responsive mobile navigation with animated menu icon.
+- **CSS scroll‑driven animations** — headings and body copy fade in as they enter the viewport using modern `animation-timeline: view()`.
+- **Floating UI elements** — hero images, unit avatars, leader cards, and gallery items gently bob using keyframe animations.
+- **Fully responsive layout** — built with CSS Grid and Flexbox, adapts gracefully from large desktops to small phones.
+
+---
+
+## Technologies Used
+
+| Technology        | Link                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------- |
+| React             | [https://react.dev](https://react.dev)                                                    |
+| Vite              | [https://vitejs.dev](https://vitejs.dev)                                                  |
+| JavaScript (ES6+) | —                                                                                         |
+| CSS3              | —                                                                                         |
+| React Router DOM  | [https://reactrouter.com](https://reactrouter.com)                                        |
+| GSAP              | [https://gsap.com](https://gsap.com)                                                      |
+| OGL               | [https://github.com/oframe/ogl](https://github.com/oframe/ogl) (used for the 3D gallery) |
+| Google Fonts      | [https://fonts.google.com](https://fonts.google.com)                                      |
+
+---
+
+## Contributing
+
+Contributions are welcome! If you’d like to improve the project, please fork the repository, create a feature branch, and open a pull request. For major changes, it’s a good idea to open an issue first to discuss what you would like to change.
+
+---
+
+## Author
+
+- GitHub: [FortuneNnah](https://github.com/FortuneNnah)
+
+---
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![OGL](https://img.shields.io/badge/WebGL-OGL-990000?style=for-the-badge&logo=webgl&logoColor=white)](https://github.com/oframe/ogl)
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://dokugen.samueltuoyo.com)
