@@ -3,6 +3,11 @@ import React from "react";
 const Section2 = () => {
   return (
     <div className="section2-container">
+              <div className="section2-large-text">
+          <h1>We are a more than a <span style={{
+            "color": "#007BFF"
+          }}>community</span>, We are:</h1>
+        </div>
       <div className="section2-layout">
         <div className="section2-visual">
           <div className="section2-image-stack">
@@ -12,8 +17,8 @@ const Section2 = () => {
         </div>
 
         <div className="section2-content">
-          <p className="section2-kicker">WE ARE A family united by faith</p>
-          <h2> A family, a community that helps you grow. </h2>
+          <p className="section2-kicker"> A family united by faith</p>
+          <h2> A family that helps you grow. </h2>
           <p className='p2'>Join us for clear teaching, honest worship, and practical application that helps you grow in faith and follow Christ more fully.</p>
 
           <div className="section2-highlights">

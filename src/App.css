@@ -170,8 +170,6 @@ h2,
 .text .p2,
 .section2-copy,
 .section2-content .p2,
-.highlight-card strong,
-.highlight-card span,
 .section2-quote p,
 .section3-copy,
 .section3-badges span,
@@ -229,12 +227,6 @@ h2,
 .herobtn-container {
   display: flex;
   gap: 12px;
-}
-
-@media (max-width: 767px) {
-  .Header-container .herobtn {
-    display: none;
-  }
 }
 
 .hamburger-menu {
@@ -374,7 +366,7 @@ h2,
   color: #fff;
 }
 
-.Hero-section h2{
+.Hero-section .hero-large-text{
   font-size: 3.6rem;
 }
 
@@ -390,7 +382,7 @@ h2,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 25px;
+  padding: 15px 30px;
   background: #007BFF;
   color: #fff;
   border: none;
@@ -1767,6 +1759,15 @@ section {
   }
 }
 
+@media (max-width: 767px) {
+  .Header-container .herobtn {
+    display: none;
+  }
+  .section2-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── 600px ── */
 @media (max-width: 600px) {
   .Hero-section {
@@ -1779,7 +1780,7 @@ section {
   }
 
   .c-stats {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .contact-card {
@@ -1795,6 +1796,18 @@ section {
   }
 }
 
+/* Phones */
+@media (max-width: 480px) {
+  .section2-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card {
+    text-align: center;
+    align-items: center;
+    min-height: 100px;
+  }
+}
 /* ============================================================
    SECTIONS
    ============================================================ */
@@ -1844,6 +1857,17 @@ section {
   background-color: #e2e2e2;
   padding: 52px 20px 60px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.section2-large-text {
+  max-width: 1160px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.section2-large-text h1 {
+  font-size: clamp(2.3rem, 3vw, 4rem);
+  line-height: 1.1;
 }
 
 .section2-layout {
@@ -1921,19 +1945,39 @@ section {
 
 .section2-highlights {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 4px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 1rem;
 }
 
 .highlight-card {
   background: #e5e5e5;
   border: 1px solid #007BFF;
   border-radius: 14px;
-  padding: 14px 12px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
+  min-height: 120px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.12);
+}
+
+.highlight-card strong {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.highlight-card span {
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+}
+
+.highlight-card .timestamp {
+  font-weight: 600;
 }
 
 .highlight-card strong {
@@ -1949,6 +1993,8 @@ section {
 .highlight-card span.timestamp{
   font-weight: 600;
 }
+
+
 .section2-quote {
   background: rgba(255, 255, 255, 0.6);
   border-left: 4px solid #007BFF;
