@@ -1675,8 +1675,20 @@ section {
    RESPONSIVE
    ============================================================ */
 
-/* ── 900px ── */
-@media (max-width: 900px) {
+
+@media (max-width: 767px) {
+  .Header-container .herobtn {
+    display: none;
+  }
+
+  .section1-content {
+    flex-direction: column-reverse;
+  }
+
+  .section2-highlights {
+    grid-template-columns: 1fr;
+  }
+
   .contact-hero {
     grid-template-columns: 1fr;
     padding: 48px 24px 44px;
@@ -1687,10 +1699,7 @@ section {
     font-size: 40px;
   }
 
-  .contact-cards-row {
-    grid-template-columns: 1fr;
-  }
-
+  .contact-cards-row,
   .contact-split {
     grid-template-columns: 1fr;
   }
@@ -1741,14 +1750,31 @@ section {
   .unit-actions {
     width: 100%;
   }
-}
 
-@media (max-width: 767px) {
-  .Header-container .herobtn {
-    display: none;
+  /* Improve hero responsiveness for small screens */
+  .Hero-section,
+  .hero {
+    padding: 48px 20px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
-  .section2-highlights {
-    grid-template-columns: 1fr;
+
+  .Hero-section h1,
+  .hero h1 {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .Hero-section p,
+  .hero p {
+    max-width: 36rem;
+    margin: 0 auto;
   }
 }
 
@@ -2072,11 +2098,7 @@ section {
   height: 240px;
 }
 
-@media (max-width: 899px) {
-  .section1-content{
-    flex-direction: column-reverse;
-  }
-}
+
 
 .section1-content .text {
   display: flex;

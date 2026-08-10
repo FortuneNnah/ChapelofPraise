@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CircularGallery from "./CircularGallery";
+import CircularGallery from "../Components/CircularGallery";
 
 const images = [
   { src: "/imgs/slide9.jpg"},

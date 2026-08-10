@@ -1,16 +1,16 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Header } from "./Components/Herosection";
-import Herosection from "./Components/Herosection";
-import AboutUs from "./Components/About";
-import ContactUs from "./Components/Contact";
-import Section1 from "./Components/Section1";
-import Unit from "./Components/Unit";
-import Section2 from "./Components/Section2";
-import Section3 from "./Components/Section3";
-import Gallery from "./Components/Gallery";
-import Footer from "./Components/Footer";
+import { Header } from "./Pages/Herosection";
+import Herosection from "./Pages/Herosection";
+import AboutUs from "./Pages/About";
+import ContactUs from "./Pages/Contact";
+import Section1 from "./Pages/Section1";
+import Unit from "./Pages/Unit";
+import Section2 from "./Pages/Section2";
+import Section3 from "./Pages/Section3";
+import Gallery from "./Pages/Gallery";
+import Footer from "./Pages/Footer";
 
 function App() {
   return (

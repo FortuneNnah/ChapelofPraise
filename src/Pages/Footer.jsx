@@ -1,5 +1,5 @@
 import React from "react";
-import TikTokIcon from "./TikTokIcon";
+import TikTokIcon from "../Components/TikTokIcon";
 
 const Footer = () => {
   return (
