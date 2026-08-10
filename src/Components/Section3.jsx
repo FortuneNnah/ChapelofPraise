@@ -11,6 +11,7 @@ const Section3 = () => {
             We create space for prayer, worship, and honest encouragement so every
             person can experience God’s presence and find hope in community.
           </p>
+          <a href="/about">More about us</a>
         </div>
 
         <div className="section3-gallery">

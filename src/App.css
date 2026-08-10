@@ -33,10 +33,6 @@ textarea {
   font: inherit;
 }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
-
 @keyframes float {
   0%,
   100% {
@@ -47,9 +43,6 @@ textarea {
   }
 }
 
-/* Floating animation — for repeated grid items and small icon/avatar
-   graphics (unit, leader & modal avatars, contact icons, gallery
-   tiles). Smaller amplitude so a full grid doesn't feel chaotic. */
 @keyframes floatSubtle {
   0%,
   100% {
@@ -60,12 +53,6 @@ textarea {
   }
 }
 
-/* Fade-in-up — plays once as an element scrolls into the viewport.
-   Driven entirely by animation-timeline: view() below, so no
-   IntersectionObserver / JS is needed to trigger it. In browsers
-   that don't yet support scroll-driven animations, the unknown
-   animation-timeline value is ignored and the element simply fades
-   in on page load instead — it never gets stuck hidden. */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -77,7 +64,6 @@ textarea {
   }
 }
 
-/* Floating images — hero image stacks & section photography */
 .imgs .img1,
 .imgs .img2,
 .imgs .img3,
@@ -133,8 +119,6 @@ textarea {
   animation-delay: -2.4s;
 }
 
-/* Fade-in-on-view — headings & eyebrow/tag text (all 3 hero sections
-   included: Hero-section, about .hero, .contact-hero) */
 h1,
 h2,
 .section-tag,
@@ -330,7 +314,7 @@ h2,
   background-attachment: scroll;
   position: relative;
   width: 100%;
-  min-height: 90vh;
+  min-height: 90dvh;
   color: #fff;
   display: flex;
   align-items: center;

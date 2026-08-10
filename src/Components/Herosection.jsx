@@ -70,7 +70,7 @@ export const Hero = () => {
         <h2>The Biggest Family On Campus</h2>
         <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
         <div className="herobtn-container">
-          <button className="herobtn">Connect With Us</button>
+          <button className="herobtn">Become a member</button>
           <button className="herobtn">Join a Service</button>
         </div>
       </div>
