@@ -5,7 +5,6 @@ import { Header } from "./Pages/Herosection";
 import Herosection from "./Pages/Herosection";
 import AboutUs from "./Pages/About";
 import ContactUs from "./Pages/Contact";
-import Section1 from "./Pages/Section1";
 import Unit from "./Pages/Unit";
 import Section2 from "./Pages/Section2";
 import Section3 from "./Pages/Section3";

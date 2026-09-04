@@ -25,8 +25,6 @@ function autoBind(instance) {
 }
 
 const DEFAULT_FONT = 'bold 30px poppins';
-// Figtree is not guaranteed to be available on the host page, so the component
-// loads it on demand whenever the default font is used.
 const DEFAULT_FONT_URL = 'https://fonts.googleapis.com/css2?family=poppins:wght@400;700&display=swap';
 
 function deriveFontFamilyFromUrl(url) {
@@ -79,24 +77,16 @@ async function loadCustomFont(fontUrl) {
   return isStylesheet ? loadFontFromStylesheet(fontUrl) : loadFontFromFile(fontUrl);
 }
 
-// Loads `fontUrl` (a stylesheet such as a Google Fonts URL, or a direct font
-// file) and returns a canvas-ready font string that keeps the size/weight from
-// `font` but swaps in the freshly loaded family. Falls back to `font` on error.
 async function resolveFont(font, fontUrl) {
   // Use the bundled Figtree stylesheet when the caller relies on the default
   // font, otherwise honor the explicit `fontUrl`.
   const effectiveUrl = fontUrl || (font === DEFAULT_FONT ? DEFAULT_FONT_URL : null);
   if (!effectiveUrl) {
-    // A custom family was supplied without a URL – make sure it is ready (in
-    // case the host page declares it) before we draw it to the canvas,
-    // otherwise the first paint silently falls back to a system font.
     if (document.fonts && document.fonts.load) {
       try {
         await document.fonts.load(font);
         await document.fonts.ready;
-      } catch {
-        // Ignore – fall back to whatever the browser provides.
-      }
+      } catch {}
     }
     return font;
   }
@@ -108,9 +98,7 @@ async function resolveFont(font, fontUrl) {
     if (document.fonts && document.fonts.load) {
       try {
         await document.fonts.load(resolved);
-      } catch {
-        // Ignore – we still attempt to render with the requested font.
-      }
+      } catch {}
     }
     return resolved;
   } catch (error) {
