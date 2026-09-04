@@ -64,7 +64,7 @@ export const Hero = () => {
       <div className="overlay"></div>
       <div className="Hero-container">
         <h1 style={{
-          "fontSize" : "14px",
+          "fontSize" : "15px",
           "fontStyle" :"italic",
           }}>Welcome to Chapel Of Praise</h1>
         <h2>The Biggest Family On Campus</h2>
