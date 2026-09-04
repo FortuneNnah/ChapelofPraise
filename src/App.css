@@ -1955,7 +1955,7 @@ section {
 
 .section2-highlights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18px, 2fr));
   gap: 16px;
   margin-top: 1rem;
 }
