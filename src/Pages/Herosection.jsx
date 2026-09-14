@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
 import Gallery from "./Gallery";
@@ -58,15 +57,17 @@ export const Header = () => {
   );
 };
 
-export const Hero = () => {
+export const Hero = () => { 
   return (
     <div id="Home" className="Hero-section">
       <div className="overlay"></div>
       <div className="Hero-container">
         <h1 style={{
-          "fontSize" : "15px",
-          "fontStyle" :"italic",
-          }}>Welcome to Chapel Of Praise</h1>
+          "fontSize": "15px",
+          "fontStyle": "italic",
+          "fontWeight": "normal",
+        }}>Welcome to Chapel Of Praise
+        </h1>
         <h2>The Biggest Family On Campus</h2>
         <p>We are a church family committed to sharing the truth of God’s Word and raising lives that reflect His purpose.</p>
         <div className="herobtn-container">
