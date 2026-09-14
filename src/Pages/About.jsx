@@ -97,8 +97,8 @@ export default function AboutUs() {
           </p>
 
           <div className="about-hero-meta">
-            <span>20+ Years of ministry</span>
-            <span>500+ Lives impacted</span>
+            <span>13+ Years of ministry</span>
+            <span>Thousand of lives impacted</span>
             <span>3 Weekly services</span>
           </div>
 
@@ -106,7 +106,7 @@ export default function AboutUs() {
         </div>
 
         <div className="about-hero-media">
-          <img src="/imgs/congregation.jpg" alt="Church congregation worshipping together" />
+          <img src="/imgs/slide6.jpg" alt="Church congregation worshipping together" />
         </div>
       </section>
 
@@ -139,7 +139,7 @@ export default function AboutUs() {
       <section className="about-mission">
         <div className="section-intro centered">
           <p className="about-kicker">Mission & Vision</p>
-          <h2>Faith that informs every step we take.</h2>
+          <h2>Faith that forms every step we take.</h2>
         </div>
 
         <div className="mission-grid">
