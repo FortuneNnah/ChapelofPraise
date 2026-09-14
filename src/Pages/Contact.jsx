@@ -1,38 +1,34 @@
 import { useState } from "react";
-// ─── Data ──────────────────────────────────────────────────
 
 const contactItems = [
   {
-    icon: "ti-map-pin",
     label: "Address",
     value: "Pav 2, Akwa Ibom State University, Ikot Akpaden.",
-    sub: "Come find us — all are welcome.",
+    meta: "Come find us — all are welcome.",
+    href: "https://maps.google.com/?q=Pav+2+Akwa+Ibom+State+University+Ikot+Akpaden",
+    type: "map",
   },
   {
-    icon: "ti-phone",
     label: "Phone",
     value: "+234 800 000 0000",
-    sub: "Mon – Fri, 9:00 AM – 5:00 PM",
+    meta: "Mon – Fri, 9:00 AM – 5:00 PM",
+    href: "tel:+2348000000000",
+    type: "phone",
   },
   {
-    icon: "ti-mail",
     label: "Email",
     value: "hello@chapelofpraise.org",
-    sub: "We reply within 24 hours.",
+    meta: "We respond within 24 hours.",
+    href: "mailto:hello@chapelofpraise.org",
+    type: "email",
   },
 ];
 
-const scheduleItems = [
-  { day: "Sunday",    name: "Sunday Worship",       time: "8:00 AM & 10:30 AM" },
-  { day: "Tuesday", name: "Midweek Bible Study",   time: "6:00 PM"            },
-  { day: "Friday",    name: "Miracle Service", time: "6:00 PM"            },
-  { day: "Office",    name: "Pastoral & Admin team", time: "Mon – Fri(9:00 AM – 3:00 PM)"          },
-];
-
-const mapChips = [
-  { icon: "ti-car",         label: "Parking available" },
-  { icon: "ti-accessible",  label: "Accessible"        },
-  { icon: "ti-building",    label: "Abuja, FCT"        },
+const serviceItems = [
+  { day: "Sunday", title: "Sunday Worship", time: "8:00 AM & 10:30 AM" },
+  { day: "Tuesday", title: "Midweek Bible Study", time: "6:00 PM" },
+  { day: "Friday", title: "Miracle Service", time: "6:00 PM" },
+  { day: "Office", title: "Pastoral & Admin Team", time: "Mon – Fri, 9:00 AM – 3:00 PM" },
 ];
 
 const subjectOptions = [
@@ -44,281 +40,261 @@ const subjectOptions = [
   "Partnership & Giving",
 ];
 
-// ─── Sub-components ────────────────────────────────────────
+const initialForm = {
+  fullName: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+};
 
-function SectionMarker({ label, light = false }) {
-  return (
-    <div className="section-marker">
-      <div className={`marker-dot${light ? " marker-dot--light" : ""}`} />
-      <span className={`marker-text${light ? " marker-text--light" : ""}`}>
-        {label}
-      </span>
-    </div>
-  );
-}
+function validateForm(values) {
+  const nextErrors = {};
 
-function ContactCard({ icon, label, value, sub }) {
-  return (
-    <div className="contact-card">
-      <div className="cc-icon">
-        <i className={`ti ${icon}`} aria-hidden="true" />
-      </div>
-      <div>
-        <div className="cc-label">{label}</div>
-        <div className="cc-value" style={{ whiteSpace: "pre-line" }}>{value}</div>
-      </div>
-      <div className="cc-sub">{sub}</div>
-    </div>
-  );
-}
-
-function ScheduleItem({ day, name, time }) {
-  return (
-    <div className="sched-item">
-      <div>
-        <div className="sched-day">{day}</div>
-        <div className="sched-name">{name}</div>
-      </div>
-      <div className="sched-time">{time}</div>
-    </div>
-  );
-}
-
-// ─── Main Component ─────────────────────────────────────────
-
-export default function ContactUs() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName:  "",
-    email:     "",
-    phone:     "",
-    subject:   "",
-    message:   "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  if (!values.fullName.trim()) {
+    nextErrors.fullName = "Please enter your full name.";
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  if (!values.email.trim()) {
+    nextErrors.email = "Please enter your email address.";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+    nextErrors.email = "Please enter a valid email address.";
+  }
+
+  if (!values.subject) {
+    nextErrors.subject = "Please choose a subject.";
+  }
+
+  if (!values.message.trim()) {
+    nextErrors.message = "Please write a short message.";
+  } else if (values.message.trim().length < 10) {
+    nextErrors.message = "Your message should be at least 10 characters long.";
+  }
+
+  return nextErrors;
+}
+
+export default function ContactUs() {
+  const [formData, setFormData] = useState(initialForm);
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const nextErrors = validateForm(formData);
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setSubmitted(false);
+      return;
+    }
+
     setSubmitted(true);
+    setFormData(initialForm);
   }
 
   return (
     <div className="contact-page">
-
-      {/* ── HERO ─────────────────────────────────────────── */}
       <section className="contact-hero">
-        <div className="contact-hero-bg" />
-        <div className="contact-hero-glow" />
-
-        <div className="contact-hero-left">
-          <div className="c-tag">
-            <span className="c-tag-dot" />
-            Contact Us
-          </div>
-          <h1>
-            Let's<br /><span>Meet You</span>
-          </h1>
-          <hr className="c-hero-rule" />
-          <p className="c-hero-desc">
-            We'd love to hear from you. Whether it's a question, a prayer
-            request, or a first visit enquiry. Our team is always ready to
-            welcome you.
+        <div className="contact-hero-copy">
+          <p className="contact-kicker">Contact</p>
+          <h1>We’d Love to Hear From You</h1>
+          <p className="contact-hero-text">
+            Whether you are visiting for the first time, seeking prayer support,
+            or simply want to ask a question, we would be glad to connect with you.
           </p>
+          <div className="contact-quick-links">
+            <a href="#contact-info">Get in touch</a>
+            <a href="#visit-us">Find us</a>
+          </div>
         </div>
 
-        <div className="contact-hero-right">
-          <p className="c-tagline">
-            "There is no stranger here,<br />only family yet to meet."
-          </p>
-          <div className="c-stats">
-            {[
-              { num: "20+", label: "Years"    },
-              { num: "3",  label: "Weekly"   },
-              { num: "24h", label: "Response" },
-            ].map((s) => (
-              <div className="c-stat" key={s.label}>
-                <div className="c-stat-num">{s.num}</div>
-                <div className="c-stat-label">{s.label}</div>
-              </div>
-            ))}
+        <div className="contact-hero-panel">
+          <div className="panel-stat">
+            <span>20+</span>
+            <small>Years of ministry</small>
+          </div>
+          <div className="panel-stat">
+            <span>3</span>
+            <small>Weekly gatherings</small>
+          </div>
+          <div className="panel-stat">
+            <span>24h</span>
+            <small>Response time</small>
           </div>
         </div>
       </section>
 
-      {/* ── CONTACT CARDS ────────────────────────────────── */}
-      <div className="contact-cards-row">
-        {contactItems.map((item) => (
-          <ContactCard key={item.label} {...item} />
-        ))}
-      </div>
+      <section className="contact-overview" id="contact-info">
+        <div className="section-heading">
+          <p className="contact-kicker">Reach Us</p>
+          <h2>Start with the information you need most.</h2>
+        </div>
 
-      {/* ── SCHEDULE + MAP ───────────────────────────────── */}
-      <div className="contact-split">
+        <div className="contact-list">
+          {contactItems.map((item) => (
+            <a key={item.label} href={item.href} className="contact-item" target={item.type === "map" ? "_blank" : undefined} rel={item.type === "map" ? "noreferrer" : undefined}>
+              <div className="contact-label-row">
+                <span className="contact-label">{item.label}</span>
+                <span className="contact-badge">{item.type}</span>
+              </div>
+              <p className="contact-value">{item.value}</p>
+              <span className="contact-meta">{item.meta}</span>
+            </a>
+          ))}
+        </div>
+      </section>
 
-        {/* Schedule */}
-        <div className="schedule-panel">
-          <SectionMarker label="Join Us" />
-          <h2>Service<br />schedule</h2>
-          <p className="schedule-intro">
-            Pick a time that works for you. Everyone is welcome at every
-            service.
-          </p>
+      <section className="contact-main" id="visit-us">
+        <div className="contact-main-column info-column">
+          <div className="section-heading compact">
+            <p className="contact-kicker">Visit</p>
+            <h2>Service times</h2>
+          </div>
+
           <div className="schedule-list">
-            {scheduleItems.map((s) => (
-              <ScheduleItem key={s.day} {...s} />
-            ))}
-          </div>
-          <span className="sched-badge">All services open to everyone</span>
-        </div>
-
-        {/* Map */}
-        <div className="map-panel">
-          <SectionMarker label="Find Us" light />
-          <h2>Our<br />location</h2>
-          <div className="map-frame">
-            <i className="ti ti-map-2" aria-hidden="true" />
-            <p className="map-placeholder-text">Embed your Google Map here</p>
-          </div>
-          <div className="map-chips">
-            {mapChips.map((chip) => (
-              <div className="map-chip" key={chip.label}>
-                <i className={`ti ${chip.icon}`} aria-hidden="true" />
-                {chip.label}
-              </div>
-            ))}
-          </div>
-        </div>
-
-      </div>
-
-      {/* ── FORM ─────────────────────────────────────────── */}
-      <section className="form-section">
-
-        <div className="form-header">
-          <div>
-            <SectionMarker label="Message Us" />
-            <h2>
-              Send us a<br /><span>message</span>
-            </h2>
-          </div>
-          <p className="form-intro">
-            Whether you have a question about our services, want to make a
-            prayer request, or simply want to reach out — we're here. Fill in
-            the form and we'll get back to you within 24 hours.
-          </p>
-        </div>
-
-        {submitted ? (
-          <div style={{ textAlign: "center", padding: "48px 0" }}>
-            <div style={{
-              width: 56, height: 56, borderRadius: "50%",
-              background: "rgba(18,18,42,0.06)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 16px", fontSize: 24, color: "var(--navy)"
-            }}>
-              <i className="ti ti-check" aria-hidden="true" />
-            </div>
-            <h3 style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 26, fontWeight: 600, color: "var(--navy)", marginBottom: 8
-            }}>
-              Message received!
-            </h3>
-            <p style={{
-              fontSize: 13, fontWeight: 300, color: "var(--grey)",
-              lineHeight: 1.7, maxWidth: 320, margin: "0 auto 24px"
-            }}>
-              Thank you for reaching out. We'll get back to you within 24 hours.
-            </p>
-            <button
-              className="submit-btn"
-              onClick={() => { setSubmitted(false); setFormData({ firstName:"", lastName:"", email:"", phone:"", subject:"", message:"" }); }}
-            >
-              Send another message
-            </button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <div className="form-grid">
-              <div className="f-field">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  id="firstName" name="firstName" type="text"
-                  placeholder="John"
-                  value={formData.firstName} onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="f-field">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  id="lastName" name="lastName" type="text"
-                  placeholder="Doe"
-                  value={formData.lastName} onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="f-field">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  id="email" name="email" type="email"
-                  placeholder="you@example.com"
-                  value={formData.email} onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="f-field">
-                <label htmlFor="phone">Phone (optional)</label>
-                <input
-                  id="phone" name="phone" type="tel"
-                  placeholder="+234 800 000 0000"
-                  value={formData.phone} onChange={handleChange}
-                />
-              </div>
-              <div className="f-field full">
-                <label htmlFor="subject">Subject</label>
-                <div className="f-select-wrap">
-                  <select
-                    id="subject" name="subject"
-                    value={formData.subject} onChange={handleChange}
-                    required
-                  >
-                    <option value="" disabled>Select a topic…</option>
-                    {subjectOptions.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                  <i className="ti ti-chevron-down" aria-hidden="true" />
+            {serviceItems.map((service) => (
+              <div key={service.day} className="schedule-item">
+                <div>
+                  <h3>{service.day}</h3>
+                  <p>{service.title}</p>
                 </div>
+                <span>{service.time}</span>
               </div>
-              <div className="f-field full">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message" name="message"
-                  placeholder="Write your message here…"
-                  value={formData.message} onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="form-footer">
-              <div className="form-note">
-                <i className="ti ti-lock" aria-hidden="true" />
-                Your message is private and secure.
-              </div>
-              <button className="submit-btn" type="submit">
-                Send Message
-                <i className="ti ti-arrow-right" aria-hidden="true" />
+          <div className="visit-panel">
+            <p className="contact-kicker">Find us</p>
+            <h3>Chapel of Praise</h3>
+            <p>
+              Pav 2, Akwa Ibom State University, Ikot Akpaden.<br />
+              We welcome first-time visitors and long-time family members alike.
+            </p>
+            <a href="https://maps.google.com/?q=Pav+2+Akwa+Ibom+State+University+Ikot+Akpaden" target="_blank" rel="noreferrer">Get directions</a>
+          </div>
+        </div>
+
+        <div className="contact-main-column form-column">
+          <div className="section-heading compact">
+            <p className="contact-kicker">Message us</p>
+            <h2>Send a message</h2>
+          </div>
+
+          {submitted ? (
+            <div className="success-panel" aria-live="polite">
+              <div className="success-icon">✓</div>
+              <h3>Message received</h3>
+              <p>Thank you for reaching out. We’ll respond soon and are glad to hear from you.</p>
+              <button
+                type="button"
+                className="submit-btn secondary"
+                onClick={() => setSubmitted(false)}
+              >
+                Send another message
               </button>
             </div>
-          </form>
-        )}
+          ) : (
+            <form onSubmit={handleSubmit} noValidate className="contact-form">
+              <div className="field-row">
+                <div className="field-group">
+                  <label htmlFor="fullName">Full name</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    placeholder="Your name"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(errors.fullName)}
+                  />
+                  {errors.fullName && <span className="field-error">{errors.fullName}</span>}
+                </div>
+
+                <div className="field-group">
+                  <label htmlFor="email">Email address</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(errors.email)}
+                  />
+                  {errors.email && <span className="field-error">{errors.email}</span>}
+                </div>
+              </div>
+
+              <div className="field-row">
+                <div className="field-group">
+                  <label htmlFor="phone">Phone number</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+234 800 000 0000"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="field-group">
+                  <label htmlFor="subject">Subject</label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(errors.subject)}
+                  >
+                    <option value="">Select a topic</option>
+                    {subjectOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                  {errors.subject && <span className="field-error">{errors.subject}</span>}
+                </div>
+              </div>
+
+              <div className="field-group full-width">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell us how we can help..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  aria-invalid={Boolean(errors.message)}
+                />
+                {errors.message && <span className="field-error">{errors.message}</span>}
+              </div>
+
+              <div className="form-footer">
+                <span className="privacy-note">We’ll keep your message private and respectful.</span>
+                <button type="submit" className="submit-btn">Send Message</button>
+              </div>
+            </form>
+          )}
+        </div>
+      </section>
+
+      <section className="support-band">
+        <div>
+          <p className="contact-kicker">Prayer & Support</p>
+          <h2>Need pastoral help or prayer?</h2>
+        </div>
+        <p>
+          We are here for prayer requests, encouragement, and general pastoral care.
+          Reach out and someone from the church family will be glad to help.
+        </p>
       </section>
     </div>
   );

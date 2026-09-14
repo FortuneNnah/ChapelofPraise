@@ -6,12 +6,12 @@ const images = [
   { src: "/imgs/slide2.jpg"},
   { src: "/imgs/slide3.jpg"},
   { src: "/imgs/slide4.jpg"},
-  { src: "/imgs/slide5.jpg"},
+  { src: "/imgs/Dance1.jpg"},
   { src: "/imgs/slide6.jpg"},
-  { src: "/imgs/slide7.jpg"},
+  { src: "/imgs/slide5.jpg"},
+  { src: "/imgs/slide8.jpg"},
   { src: "/imgs/slide2.jpg"},
-  { src: "/imgs/praise3.jpg"},
-  { src: "/imgs/praise3.jpg"},
+  { src: "/imgs/worship1.jpg"},
   
 ];
 
