@@ -1,0 +1,494 @@
+/* ==========================================================
+   SERMONS PAGE — Chapel Of Praise
+   Paste at the bottom of your main stylesheet, above the
+   consolidated media queries if you prefer to keep them last.
+
+   Uses your existing fonts (Poppins, Cormorant Garamond) and
+   brand colours. Every class starts with "sermon" so nothing
+   clashes with other pages.
+   Spotify green (#1DB954) is used only on the Spotify buttons
+   so visitors recognise where the link goes.
+   ========================================================== */
+
+.sermons-page {
+  width: 100%;
+  background: #f6f3ee; /* same cream as the About page */
+  color: #12122a;
+  overflow-x: hidden;
+}
+
+/* ---------- Page hero ---------- */
+.sermons-hero {
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 56px 20px 48px;
+}
+
+.sermons-kicker {
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Giant word, same treatment as the home hero */
+.sermons-page .sermons-title {
+  margin: 0 0 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 15vw, 13rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #007BFF; /* fallback if gradient text is unsupported */
+  background: linear-gradient(180deg, #2e9bff 0%, #007BFF 50%, #0465cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Load-in animation replaces the global scroll-fade on h1 */
+  animation: sermonRise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sermons-intro {
+  max-width: 560px;
+  margin-bottom: 28px;
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  line-height: 1.8;
+  color: #475467;
+}
+
+.sermons-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Buttons ---------- */
+.sermon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px; /* comfortable tap target */
+  padding: 12px 26px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.sermon-btn:hover {
+  transform: translateY(-2px);
+}
+
+.sermon-btn:focus-visible {
+  outline: 3px solid #007BFF;
+  outline-offset: 3px;
+}
+
+.sermon-spotify-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.sermon-btn-spotify {
+  background: #1DB954;
+  color: #12122a;
+  box-shadow: 0 10px 24px rgba(29, 185, 84, 0.28);
+}
+
+.sermon-btn-spotify:hover {
+  background: #1ed760;
+}
+
+.sermon-btn-outline {
+  background: transparent;
+  border-color: #12122a;
+  color: #12122a;
+}
+
+.sermon-btn-outline:hover {
+  background: #12122a;
+  color: #ffffff;
+}
+
+/* ---------- Latest sermon ---------- */
+.sermon-featured {
+  max-width: 1300px;
+  margin: 0 auto 64px;
+  padding: 0 20px; /* overrides the global "section" padding */
+}
+
+.sermon-featured-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  padding: 28px 22px;
+  border-radius: 28px;
+  background: #12122a;
+  color: #ffffff;
+  box-shadow: 0 30px 60px rgba(18, 18, 42, 0.28);
+}
+
+.sermon-flag {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #007BFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sermon-featured-title {
+  margin-bottom: 10px;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.sermon-featured-meta {
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #9db8ff;
+}
+
+.sermon-featured-desc {
+  max-width: 480px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #ffffffcc;
+}
+
+.sermon-featured-player {
+  align-self: center;
+}
+
+.sermon-featured-player iframe {
+  display: block;
+  border-radius: 14px;
+}
+
+/* Shown when the link is not an episode link, so no player can load */
+.sermon-player-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 232px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sermon-player-fallback .sermon-spotify-icon {
+  width: 44px;
+  height: 44px;
+  color: #1DB954;
+}
+
+/* ---------- Library: search, filters, cards ---------- */
+.sermon-library {
+  max-width: 1300px;
+  margin: 0 auto 72px;
+  padding: 0 20px; /* overrides the global "section" padding */
+  scroll-margin-top: 90px; /* keeps the heading clear of the sticky header */
+}
+
+.sermon-library-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.sermon-library-title {
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #101828;
+}
+
+.sermon-search {
+  width: 100%;
+  max-width: 380px;
+  padding: 13px 18px;
+  border: 1px solid rgba(16, 24, 40, 0.14);
+  border-radius: 999px;
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #101828;
+  transition: border-color 0.2s ease;
+}
+
+.sermon-search:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+.sermon-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.sermon-filter {
+  padding: 9px 18px;
+  border: 1px solid rgba(16, 24, 40, 0.14);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #12122a;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.sermon-filter:hover {
+  border-color: #007BFF;
+  color: #007BFF;
+}
+
+.sermon-filter.active {
+  background: #007BFF;
+  border-color: #007BFF;
+  color: #ffffff;
+}
+
+.sermon-filter:focus-visible {
+  outline: 3px solid #007BFF;
+  outline-offset: 2px;
+}
+
+.sermon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.sermon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 26px 24px;
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  /* Fades in as it scrolls into view, like the rest of your site */
+  animation: sermonFadeUp 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+.sermon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.14);
+}
+
+.sermon-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.sermon-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eaf1fb;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0465cc;
+}
+
+.sermon-date {
+  font-size: 0.78rem;
+  color: #58657a;
+  white-space: nowrap;
+}
+
+.sermon-card-title {
+  margin-bottom: 6px;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #101828;
+}
+
+.sermon-card-preacher {
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #007BFF;
+}
+
+.sermon-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: #475467;
+}
+
+.sermon-card .sermon-btn {
+  width: 100%;
+}
+
+.sermon-empty {
+  padding: 32px 0;
+  text-align: center;
+  color: #475467;
+  line-height: 1.8;
+}
+
+.sermon-empty a {
+  color: #007BFF;
+  font-weight: 600;
+}
+
+/* ---------- Follow band ---------- */
+.sermon-follow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  width: calc(100% - 40px);
+  max-width: 1260px;
+  margin: 0 auto 64px;
+  padding: 36px 24px; /* overrides the global "section" padding */
+  border-radius: 28px;
+  background: #007BFF;
+  color: #ffffff;
+}
+
+.sermon-follow-title {
+  margin-bottom: 8px;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.sermon-follow-copy p {
+  max-width: 460px;
+  line-height: 1.8;
+  color: #ffffffe6;
+}
+
+/* ---------- Animations ---------- */
+@keyframes sermonRise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sermonFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect visitors who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .sermons-page *,
+  .sermons-page *::before,
+  .sermons-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+  .sermons-actions {
+    flex-direction: column;
+  }
+
+  .sermon-btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Tablet: 600px and up ---------- */
+@media (min-width: 600px) {
+  .sermon-featured,
+  .sermon-library {
+    padding: 0 32px;
+  }
+
+  .sermons-hero {
+    padding: 72px 32px 56px;
+  }
+
+  .sermon-library-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sermon-follow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 64px);
+    padding: 40px;
+  }
+}
+
+/* ---------- Desktop: 900px and up ---------- */
+@media (min-width: 900px) {
+  .sermon-featured,
+  .sermon-library {
+    padding: 0 48px;
+  }
+
+  .sermons-hero {
+    padding: 88px 48px 64px;
+  }
+
+  .sermon-featured-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 48px 44px;
+  }
+
+  .sermon-follow {
+    width: calc(100% - 96px);
+    padding: 48px 56px;
+  }
+}
