@@ -1,0 +1,498 @@
+/* ==========================================================
+   HERO — Chapel Of Praise (poster style)
+   Replaces the old ".Hero-section" block.
+
+   Fonts used (already loaded by your @import):
+   - Poppins 900 for the giant word
+   - Cormorant Garamond italic for the welcome line
+
+   Every class starts with "cop-" so nothing here can clash
+   with the old hero rules, .herobtn, .hero, .overlay, etc.
+   ========================================================== */
+
+/* ---------- Section wrapper ---------- */
+.cop-hero {
+  /* How far the photo climbs up over the bottom of the giant word.
+     Also used to line up the "On Campus" pill with the photo edge. */
+  --cop-overlap: clamp(0.9rem, 3.2vw, 3.2rem);
+
+  position: relative;
+  isolation: isolate; /* keeps the backdrop layers inside this section */
+  width: 100%;
+  padding: 28px 20px 44px;
+  background: #f6f3ee; /* same warm cream as the About page */
+  color: #12122a;
+  overflow: hidden;
+}
+
+/* ---------- Backdrop: soft colour glows + paper grain ---------- */
+.cop-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 45% at 88% 8%, rgba(0, 123, 255, 0.14) 0%, rgba(0, 123, 255, 0) 70%),
+    radial-gradient(50% 40% at 6% 70%, rgba(18, 18, 42, 0.08) 0%, rgba(18, 18, 42, 0) 70%);
+}
+
+/* Very light grain so the cream feels like printed paper */
+.cop-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 0 0 0 -.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Content column ---------- */
+.cop-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Italic welcome line (stacked on mobile, top-right from 600px) */
+.cop-hero-eyebrow {
+  margin: 0 0 8px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #12122a;
+  animation: copFadeUp 0.8s ease-out both;
+}
+
+/* ---------- Headline ---------- */
+/* animation: none cancels the global scroll-fade that is applied to every h1.
+   The spans animate instead, so the h1 itself never becomes a stacking
+   context (the "On Campus" pill needs to sit above the photo). */
+.cop-hero .cop-hero-title {
+  position: relative;
+  display: block;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: none;
+}
+
+/* "The Biggest" — small label with a hairline after it */
+.cop-hero-title-small {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: #12122a;
+  animation: copFadeUp 0.8s ease-out 0.1s both;
+}
+
+.cop-hero-title-small::after {
+  content: "";
+  flex: none;
+  width: clamp(40px, 12vw, 160px);
+  height: 1px;
+  background: rgba(18, 18, 42, 0.3);
+}
+
+/* "FAMILY" — the giant word. Sized with vw so it always spans the page. */
+.cop-hero-title-giant {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-left: -0.04em; /* optical alignment of the F with the text above */
+  font-size: clamp(3.6rem, 22vw, 21rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.045em;
+  color: #007BFF; /* fallback if gradient text is unsupported */
+  background: linear-gradient(180deg, #2e9bff 0%, #007BFF 50%, #0465cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: copRise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* "On Campus" — pill that straddles the top edge of the photo */
+.cop-hero-title-tag {
+  position: absolute;
+  right: 2%;
+  bottom: calc(var(--cop-overlap) - 1rem); /* centres the pill on the photo edge */
+  z-index: 3;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #12122a;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  white-space: nowrap;
+  animation: copFadeUp 0.8s ease-out 0.7s both;
+}
+
+/* ---------- Photo stage ---------- */
+.cop-hero-stage {
+  position: relative;
+  z-index: 2;
+  margin-top: calc(var(--cop-overlap) * -1); /* pulls the photo up over the word */
+}
+
+/* Soft clouds on both top corners of the photo, like the poster */
+.cop-hero-stage::before,
+.cop-hero-stage::after {
+  content: "";
+  position: absolute;
+  top: -1.4rem;
+  z-index: 2;
+  width: 34%;
+  height: 5.5rem;
+  pointer-events: none;
+  filter: blur(14px);
+  background: radial-gradient(60% 60% at 50% 60%, #ffffff 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0) 72%);
+}
+
+.cop-hero-stage::before {
+  left: -4%;
+}
+
+.cop-hero-stage::after {
+  right: -4%;
+}
+
+.cop-hero-photo {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 3; /* mobile: taller crop */
+  border-radius: 22px;
+  overflow: hidden;
+  background: #12122a;
+  box-shadow: 0 30px 60px rgba(18, 18, 42, 0.28);
+  animation: copRise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
+/* Black-and-white photo with a navy-to-blue tint (the poster's red
+   duotone, translated into the church's brand colours) */
+.cop-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%; /* keeps the speaker's face and hands in frame */
+  filter: grayscale(1) contrast(1.08) brightness(1.02);
+  transition: filter 0.6s ease;
+  animation: copSettle 12s ease-out both;
+}
+
+.cop-hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transition: opacity 0.6s ease;
+  background:
+    linear-gradient(180deg, rgba(18, 18, 42, 0) 55%, rgba(18, 18, 42, 0.55) 100%),
+    linear-gradient(115deg, rgba(18, 18, 42, 0.62) 0%, rgba(0, 123, 255, 0.38) 100%);
+}
+
+/* On devices with a mouse, hovering reveals the full-colour photo */
+@media (hover: hover) {
+  .cop-hero-photo:hover img {
+    filter: none;
+  }
+
+  .cop-hero-photo:hover::after {
+    opacity: 0;
+  }
+}
+
+/* Location tag on the photo */
+.cop-hero-badge {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #12122a;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.cop-hero-badge svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #007BFF;
+}
+
+/* Light streak crossing the word and the photo */
+.cop-hero-flare {
+  position: absolute;
+  left: 57%;
+  top: -22%;
+  z-index: 3;
+  width: 5px;
+  height: 40%;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(1.2px);
+  transform: rotate(18deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 196, 0, 0.9) 30%,
+    rgba(255, 64, 129, 0.85) 55%,
+    rgba(0, 160, 255, 0.9) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: copFlare 5.5s ease-in-out infinite;
+}
+
+/* ---------- Text card + buttons ---------- */
+/* Mobile / tablet: sits under the photo with a blue rule, like your
+   other sections */
+.cop-hero-card {
+  position: relative;
+  margin-top: 22px;
+  padding-left: 16px;
+  border-left: 3px solid #007BFF;
+  animation: copFadeUp 0.8s ease-out 0.6s both;
+}
+
+.cop-hero-card p {
+  max-width: 540px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333333;
+}
+
+.cop-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cop-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* comfortable tap target */
+  padding: 12px 26px;
+  border: 2px solid #12122a;
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none; /* buttons are router links */
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Main action: solid blue */
+.cop-btn-primary {
+  background: #007BFF;
+  border-color: #007BFF;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 123, 255, 0.28);
+}
+
+.cop-btn-primary:hover {
+  background: #0465cc;
+  border-color: #0465cc;
+  transform: translateY(-2px);
+}
+
+/* Second action: outlined so the main one stands out */
+.cop-btn-outline {
+  background: transparent;
+  color: #12122a;
+}
+
+.cop-btn-outline:hover {
+  background: #12122a;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Visible keyboard focus */
+.cop-btn:focus-visible {
+  outline: 3px solid #007BFF;
+  outline-offset: 3px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes copRise {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes copFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Photo slowly settles in without moving the frame */
+@keyframes copSettle {
+  from {
+    transform: scale(1.12);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes copFlare {
+
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: rotate(18deg) translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: rotate(18deg) translateY(-12px);
+  }
+}
+
+/* Respect visitors who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .cop-hero *,
+  .cop-hero *::before,
+  .cop-hero *::after {
+    animation: none !important;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+  .cop-hero-actions {
+    flex-direction: column;
+  }
+
+  .cop-btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Tablet: 600px and up ---------- */
+@media (min-width: 600px) {
+  .cop-hero {
+    padding: 36px 32px 56px;
+  }
+
+  /* Welcome line moves to the top-right, level with "The Biggest" */
+  .cop-hero-eyebrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+  }
+
+  .cop-hero-title-small {
+    font-size: 0.8rem;
+  }
+
+  .cop-hero-title-tag {
+    font-size: 0.78rem;
+    padding: 9px 18px;
+  }
+
+  /* Wide, short photo band */
+  .cop-hero-photo {
+    aspect-ratio: auto;
+    height: clamp(260px, 38vw, 380px);
+  }
+}
+
+/* ---------- Desktop: 900px and up ---------- */
+@media (min-width: 900px) {
+  .cop-hero {
+    padding: 40px 48px 96px; /* extra bottom space for the card overhang */
+  }
+
+  .cop-hero-photo {
+    height: clamp(300px, 26vw, 380px);
+  }
+
+  /* Card floats over the bottom-right of the photo, hanging below it */
+  .cop-hero-card {
+    position: absolute;
+    right: 2%;
+    bottom: -4.25rem;
+    z-index: 4;
+    width: min(330px, 34%);
+    margin: 0;
+    padding: 22px 24px;
+    border-left: none;
+    border-radius: 20px;
+    background: #12122a;
+    box-shadow: 0 24px 50px rgba(18, 18, 42, 0.35);
+    animation:
+      copRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both,
+      floatSubtle 4.5s ease-in-out 1.6s infinite; /* floatSubtle is defined at the top of your CSS */
+  }
+
+  .cop-hero-card p {
+    font-size: 0.9rem;
+    color: #ffffffe6;
+  }
+
+  .cop-hero-actions {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .cop-hero-card .cop-btn {
+    min-height: 44px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  /* The outline button needs light colours on the navy card */
+  .cop-hero-card .cop-btn-outline {
+    border-color: #ffffffe6;
+    color: #ffffff;
+  }
+
+  .cop-hero-card .cop-btn-outline:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #12122a;
+  }
+}
+
+/* ---------- Large desktop: 1200px and up ---------- */
+@media (min-width: 1200px) {
+  .cop-hero {
+    padding: 48px 48px 104px;
+  }
+}
