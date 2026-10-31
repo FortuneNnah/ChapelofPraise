@@ -1,0 +1,752 @@
+/* ==========================================================
+   CONTACT PAGE — Chapel Of Praise
+   Replaces the old ".contact-page" block (RESET & BASE section
+   through the contact media queries). Matches the new hero and
+   sermons pages: cream background, giant gradient word, navy
+   cards, pill buttons.
+
+   Every class starts with "cx-" so nothing clashes with other
+   pages, the global "section" rule or the old contact rules.
+   Colours are written as direct hex values.
+   ========================================================== */
+
+.cx-page {
+  width: 100%;
+  background: #f6f3ee; /* same cream as the About page and hero */
+  color: #12122a;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------- Shared pieces ---------- */
+.cx-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #58657a;
+}
+
+.cx-kicker.light {
+  color: #9db8ff; /* for use on navy */
+}
+
+.cx-heading {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.cx-heading.compact {
+  margin-bottom: 22px;
+}
+
+.cx-heading h2 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #101828;
+}
+
+/* ---------- Buttons (links and real buttons share these) ---------- */
+.cx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* comfortable tap target */
+  padding: 12px 28px;
+  border: 2px solid #12122a;
+  border-radius: 999px;
+  background: transparent;
+  color: #12122a;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.cx-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cx-btn:focus-visible {
+  outline: 3px solid #007BFF;
+  outline-offset: 3px;
+}
+
+.cx-btn-primary {
+  background: #007BFF;
+  border-color: #007BFF;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 123, 255, 0.28);
+}
+
+.cx-btn-primary:hover {
+  background: #0465cc;
+  border-color: #0465cc;
+}
+
+.cx-btn-outline:hover {
+  background: #12122a;
+  color: #ffffff;
+}
+
+/* White button for use on the blue band */
+.cx-btn-light {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #12122a;
+}
+
+.cx-btn-light:hover {
+  background: #12122a;
+  border-color: #12122a;
+  color: #ffffff;
+}
+
+/* ---------- Hero ---------- */
+.cx-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 36px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 56px 20px 56px;
+}
+
+.cx-eyebrow {
+  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-style: italic;
+  font-weight: 600;
+  animation: cxFadeUp 0.8s ease-out both;
+}
+
+/* animation: none cancels the global scroll-fade on every h1.
+   The spans animate instead. */
+.cx-page .cx-title {
+  margin: 0 0 22px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: none;
+}
+
+.cx-title-small {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: #12122a;
+  animation: cxFadeUp 0.8s ease-out 0.1s both;
+}
+
+.cx-title-small::after {
+  content: "";
+  flex: none;
+  width: clamp(40px, 12vw, 160px);
+  height: 1px;
+  background: rgba(18, 18, 42, 0.3);
+}
+
+/* The giant word, same treatment as the home hero */
+.cx-title-giant {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-left: -0.04em;
+  font-size: clamp(4rem, 26vw, 11rem);
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  color: #007BFF; /* fallback if gradient text is unsupported */
+  background: linear-gradient(180deg, #2e9bff 0%, #007BFF 50%, #0465cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cxRise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* "From You" pill tucked up under the bottom of the letters */
+.cx-title-tag {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin-top: -0.9rem;
+  margin-left: 4px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #12122a;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  animation: cxFadeUp 0.8s ease-out 0.7s both;
+}
+
+.cx-hero-text {
+  max-width: 540px;
+  margin-bottom: 28px;
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  line-height: 1.8;
+  color: #475467;
+}
+
+.cx-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Stats card */
+.cx-stats {
+  list-style: none;
+  padding: 10px 26px;
+  border-radius: 28px;
+  background: #12122a;
+  color: #ffffff;
+  box-shadow: 0 30px 60px rgba(18, 18, 42, 0.28);
+  animation: cxRise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.cx-stat {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cx-stat:first-child {
+  border-top: none;
+}
+
+.cx-stat-value {
+  min-width: 4.2rem;
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #4aa3ff;
+}
+
+.cx-stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffffcc;
+  line-height: 1.6;
+}
+
+/* ---------- Contact cards ---------- */
+.cx-reach,
+.cx-main {
+  max-width: 1300px;
+  margin: 0 auto 72px;
+  padding: 0 20px; /* overrides the global "section" padding */
+  scroll-margin-top: 90px; /* keeps headings clear of the sticky header */
+}
+
+.cx-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.cx-card-link {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  color: #101828;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.25s ease;
+  /* Fades in as it scrolls into view, like the rest of your site */
+  animation: cxFadeUp 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+.cx-card-link:hover,
+.cx-card-link:focus-visible {
+  transform: translateY(-6px);
+  background: #12122a;
+  color: #ffffff;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+}
+
+.cx-card-link:focus-visible {
+  outline: 3px solid #007BFF;
+  outline-offset: 3px;
+}
+
+.cx-card-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 22px;
+  border-radius: 16px;
+  background: #eaf1fb;
+  color: #007BFF;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cx-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cx-card-link:hover .cx-card-icon,
+.cx-card-link:focus-visible .cx-card-icon {
+  background: #007BFF;
+  color: #ffffff;
+}
+
+.cx-card-label {
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #58657a;
+  transition: color 0.3s ease;
+}
+
+.cx-card-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+  overflow-wrap: anywhere; /* long email addresses never overflow the card */
+}
+
+.cx-card-meta {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #58657a;
+  transition: color 0.3s ease;
+}
+
+.cx-card-link:hover .cx-card-label,
+.cx-card-link:focus-visible .cx-card-label,
+.cx-card-link:hover .cx-card-meta,
+.cx-card-link:focus-visible .cx-card-meta {
+  color: #ffffffb3;
+}
+
+/* ---------- Main: service times + form ---------- */
+.cx-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Navy service-times card */
+.cx-visit {
+  padding: 32px 24px;
+  border-radius: 28px;
+  background: #12122a;
+  color: #ffffff;
+  box-shadow: 0 30px 60px rgba(18, 18, 42, 0.28);
+}
+
+.cx-visit .cx-heading h2 {
+  color: #ffffff;
+}
+
+.cx-schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cx-schedule-item:first-child {
+  border-top: none;
+}
+
+.cx-schedule-item h3 {
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+.cx-schedule-item p {
+  font-size: 0.82rem;
+  color: #aab2d0;
+}
+
+.cx-schedule-item span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: right;
+  color: #9db8ff;
+}
+
+.cx-visit-panel {
+  margin-top: 26px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cx-visit-panel h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.cx-visit-panel p {
+  margin-bottom: 22px;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: #ffffffcc;
+}
+
+/* White form card */
+.cx-form-card {
+  scroll-margin-top: 90px;
+  padding: 32px 24px;
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.cx-form {
+  display: grid;
+  gap: 20px;
+}
+
+.cx-field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.cx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cx-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #58657a;
+}
+
+.cx-field input,
+.cx-field select,
+.cx-field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(16, 24, 40, 0.14);
+  border-radius: 14px;
+  background: #f9fafb;
+  font: inherit;
+  font-size: 0.96rem;
+  color: #101828;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cx-field input:focus,
+.cx-field select:focus,
+.cx-field textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.16);
+}
+
+.cx-field [aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+.cx-field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.cx-error {
+  font-size: 0.78rem;
+  color: #b42318;
+}
+
+.cx-form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.cx-privacy {
+  font-size: 0.8rem;
+  color: #58657a;
+}
+
+/* Honeypot field: off-screen so people never see it */
+.cx-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Send error message */
+.cx-alert {
+  padding: 14px 16px;
+  border: 1px solid #f3b8b3;
+  border-radius: 14px;
+  background: #fdf0ef;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #8a1c13;
+}
+
+.cx-alert a {
+  font-weight: 600;
+  color: #8a1c13;
+}
+
+/* Button while the message is sending */
+.cx-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+/* Success state */
+.cx-success {
+  padding: 24px 0 8px;
+  text-align: center;
+}
+
+.cx-success-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0465cc 0%, #007BFF 100%);
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  box-shadow: 0 14px 30px rgba(0, 77, 181, 0.2);
+}
+
+.cx-success h3 {
+  margin-bottom: 12px;
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+  color: #101828;
+}
+
+.cx-success p {
+  max-width: 360px;
+  margin: 0 auto 24px;
+  line-height: 1.8;
+  color: #475467;
+}
+
+/* ---------- Prayer & support band ---------- */
+.cx-support {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: calc(100% - 40px);
+  max-width: 1260px;
+  margin: 0 auto 64px;
+  padding: 36px 24px; /* overrides the global "section" padding */
+  border-radius: 28px;
+  background: #007BFF;
+  color: #ffffff;
+}
+
+.cx-support .cx-kicker.light {
+  color: #ffffffcc;
+}
+
+.cx-support h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.cx-support-copy p {
+  max-width: 540px;
+  line-height: 1.8;
+  color: #ffffffe6;
+}
+
+/* ---------- Animations ---------- */
+@keyframes cxRise {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cxFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respect visitors who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .cx-page *,
+  .cx-page *::before,
+  .cx-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+
+  .cx-hero-links,
+  .cx-hero-links .cx-btn,
+  .cx-form-footer .cx-btn,
+  .cx-support .cx-btn {
+    width: 100%;
+  }
+
+  .cx-hero-links {
+    flex-direction: column;
+  }
+
+  .cx-schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .cx-schedule-item span {
+    text-align: left;
+  }
+}
+
+/* ---------- Tablet: 600px and up ---------- */
+@media (min-width: 600px) {
+  .cx-hero {
+    padding: 72px 32px 64px;
+  }
+
+  .cx-title-small {
+    font-size: 0.8rem;
+  }
+
+  .cx-title-tag {
+    font-size: 0.78rem;
+    padding: 9px 18px;
+  }
+
+  .cx-reach,
+  .cx-main {
+    padding: 0 32px;
+  }
+
+  .cx-field-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cx-form-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cx-visit,
+  .cx-form-card {
+    padding: 36px 32px;
+  }
+
+  .cx-support {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 64px);
+    padding: 40px;
+  }
+}
+
+/* ---------- Desktop: 900px and up ---------- */
+@media (min-width: 900px) {
+  .cx-reach,
+  .cx-main {
+    padding: 0 48px;
+  }
+
+  .cx-main {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+  }
+
+  .cx-visit,
+  .cx-form-card {
+    padding: 44px 40px;
+  }
+
+  .cx-support {
+    width: calc(100% - 96px);
+    padding: 48px 56px;
+  }
+}
+
+/* ---------- Large desktop: 1000px and up ---------- */
+@media (min-width: 1000px) {
+  .cx-hero {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 56px;
+    padding: 88px 48px 72px;
+  }
+
+  .cx-title-giant {
+    font-size: clamp(4rem, 15vw, 11rem);
+  }
+
+  /* The stats card floats gently, like the other cards on your site */
+  .cx-stats {
+    animation:
+      cxRise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both,
+      floatSubtle 4.5s ease-in-out 1.6s infinite; /* floatSubtle is defined at the top of your CSS */
+  }
+}
