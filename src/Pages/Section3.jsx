@@ -1,30 +1,44 @@
 import React from "react";
-import { FaArrowRight } from "react-icons/fa6"
 import ArrowIcon from "../Components/ArrowIcon";
+import './Section.css';
 
+/* ------------------------------------------------------------
+   SECTION 3 — A place to encounter God
+   Styles live in home-sections.css (classes start with "encounter-").
+   Your ArrowIcon component is kept exactly where it was.
+   (The unused FaArrowRight import was removed.)
+   ------------------------------------------------------------ */
 
 const Section3 = () => {
   return (
-    <div className="section3-container">
-      <div className="section3-showcase">
-        <div className="section3-panel">
-          <p className="section3-kicker">WE ARE A place to encounter God</p>
-          <h2>Worship that lifts, teaches, and strengthens.</h2>
-          <p className="section3-copy">
-            We create space for prayer, worship, and honest encouragement so every
-            person can experience God’s presence and find hope in community.
+    <section className="encounter" aria-labelledby="encounter-title">
+      <div className="encounter-inner">
+        <div className="encounter-panel">
+          <p className="encounter-kicker">We are a place to encounter God</p>
+
+          <h2 id="encounter-title" className="encounter-title">
+            <span className="encounter-accent">Worship</span> that lifts, teaches,
+            and strengthens.
+          </h2>
+
+          <p className="encounter-copy">
+            We create space for prayer, worship, and honest encouragement so
+            every person can experience God’s presence and find hope in
+            community.
           </p>
 
-          <ArrowIcon />
+          <div className="encounter-action">
+            <ArrowIcon />
+          </div>
         </div>
 
-        <div className="section3-gallery">
-          <img src="/imgs/slide4.jpg" alt="Worship gathering" />
-          <img src="/imgs/slide3.jpg" alt="Prayer and fellowship" />
-          <img src="/imgs/praise7.jpg" alt="Campus fellowship" />
+        <div className="encounter-gallery">
+          <img className="encounter-img encounter-img-tall" src="/imgs/slide4.jpg" alt="Worship gathering" />
+          <img className="encounter-img" src="/imgs/slide3.jpg" alt="Prayer and fellowship" />
+          <img className="encounter-img" src="/imgs/praise7.jpg" alt="Campus fellowship" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

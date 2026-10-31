@@ -47,7 +47,7 @@ const Gallery = () => {
         <CircularGallery
           items={images.map((img) => ({ image: img.src }))}
           bend={isMobile ? 1.2 : 3}
-          textColor="#ffffff"
+          textColor="#000"
           borderRadius={0.05}
           scrollEase={isMobile ? 0.03 : 0.02}
           fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"

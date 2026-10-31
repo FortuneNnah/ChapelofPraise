@@ -59,7 +59,7 @@ const serviceItems = [
 ];
 
 const stats = [
-  { value: "20+", label: "Years of ministry" },
+  { value: "15+", label: "Years of ministry" },
   { value: "3", label: "Weekly gatherings" },
   { value: "24h", label: "Response time" },
 ];
