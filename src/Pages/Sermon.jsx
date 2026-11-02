@@ -209,6 +209,7 @@ const Sermons = () => {
         </section>
       )}
 
+      {/* ===== All sermons ===== */}
       {rest.length > 0 && (
         <section id="all-sermons" className="sermon-library">
           <div className="sermon-library-head">
@@ -217,7 +218,7 @@ const Sermons = () => {
             <input
               type="search"
               className="sermon-search"
-              placeholder="Search by title, preacher or series"
+              placeholder="Search by title or preacher"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               aria-label="Search sermons"
@@ -257,6 +258,7 @@ const Sermons = () => {
         </section>
       )}
 
+      {/* ===== Follow band ===== */}
       <section className="sermon-follow">
         <div className="sermon-follow-copy">
           <h2 className="sermon-follow-title">Never miss a message</h2>
