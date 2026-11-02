@@ -10,40 +10,42 @@ const sermons = [
     title: "ACADEMIC SUMMIT PART 2",
     preacher: "Engr. Udeme Linus",
     date: "2026-9-6",
-    series: "Series name",
-    description: "One or two lines about what this message covers.",
-    spotifyUrl: "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+    description: "In this sermon, we are taught how to achieve academic excellence and success.",
+    spotifyUrl: "https://open.spotify.com/episode/2G0StDDWyTxfXa1oaWiWIH?si=-Ehukd-zQ0yYFX6gtEge1w",
   },
   {
     id: 2,
     title: "ACADEMIC SUMMIT PART 1",
     preacher: "Engr. Udeme Linus",
     date: "2026-09-06",
-    series: "Series name",
-    description: "Tips and Methods on how to excel academically.",
-    spotifyUrl: "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+    description: "In this sermon, we are taught tips and methods on how to excel academically.",
+    spotifyUrl: "https://open.spotify.com/episode/3l2H86wgMqrmHKOYIOoXIh?si=_I7kPUc3QV2euIrWb1GzCw",
   },
   {
     id: 3,
     title: "WAITING ON THE LORD",
     preacher: "Bro. Samuel Udofia",
     date: "2026-08-10",
-    series: "Another series",
-    description: "One or two lines about what this message covers.",
-    spotifyUrl: "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+    description: "In this sermon, we are taught how do wait diligemtly upon the lord.",
+    spotifyUrl: "https://open.spotify.com/episode/36stp79wG93OOJxdaLFdqZ?si=GUZbByACR6CrU_ObdtAFnA",
   },
   {
     id: 4,
     title: "MERCY PREVAILS OVER JUDGEMENT",
     preacher: "Bro. Olosunde Daniel",
     date: "2026-07-26",
-    series: "Another series",
-    description: "One or two lines about what this message covers.",
-    spotifyUrl: "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+    description: "In this sermon, we are taught about the mercy of God and how it prevails over judgment.",
+    spotifyUrl: "https://open.spotify.com/episode/0ARzvjQ7ECbXZNYyyvypok?si=avEjMDEeQnudh1SX_hGzSw",
+  },
+  {
+    id: 5,
+    title: "REGENERATION BY FIRE",
+    preacher: "Bro. Ifiok Udoma",
+    date: "2026-07-17",
+    description: "In this sermon, we are taught about the process of regeneration through the refining fire of the Holy Spirit.",
+    spotifyUrl: "https://open.spotify.com/episode/4Jo7hrSKakRwdDZNk1yS8o?si=ZPaj1Hz8TwiEhXzD4Wmk2w",
   },
 ];
-
-/* ---------- Helpers ---------- */
 
 const formatDate = (iso) =>
   new Date(iso).toLocaleDateString("en-GB", {
@@ -98,13 +100,13 @@ const SermonCard = ({ sermon }) => (
   </article>
 );
 
-/* ---------- Page ---------- */
+
 
 const Sermons = () => {
   const [query, setQuery] = useState("");
   const [activeSeries, setActiveSeries] = useState("All");
 
-  // Newest first
+  // Newest sermon first
   const sorted = useMemo(
     () => [...sermons].sort((a, b) => new Date(b.date) - new Date(a.date)),
     []
@@ -207,7 +209,6 @@ const Sermons = () => {
         </section>
       )}
 
-      {/* ===== All sermons ===== */}
       {rest.length > 0 && (
         <section id="all-sermons" className="sermon-library">
           <div className="sermon-library-head">
@@ -256,7 +257,6 @@ const Sermons = () => {
         </section>
       )}
 
-      {/* ===== Follow band ===== */}
       <section className="sermon-follow">
         <div className="sermon-follow-copy">
           <h2 className="sermon-follow-title">Never miss a message</h2>
