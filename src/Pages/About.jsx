@@ -138,26 +138,23 @@ export default function AboutUs() {
 
       <section className="about-mission">
         <div className="section-intro centered">
-          <p className="about-kicker">Mission & Vision</p>
-          <h2>Faith that forms every step we take.</h2>
+          <p className="about-kicker">Our Vision</p>
+          <h2>The enthronement of the Lord Jesus Christ as the sovereign King in lives and destinies on campus.</h2>
         </div>
 
         <div className="mission-grid">
           <article className="mission-block">
-            <span className="mission-number">01</span>
             <h3>Our Mission</h3>
             <p>
-              To raise devoted followers of Christ who love God, serve people, and
-              influence the world with the transforming power of the gospel.
+              To blanket Akwa Ibom State University and it's environment with God's Presence by the administration of the benefits of Redemption, through the ministry of the Word and the demonstration of power evident in the salvation of souls, healings, deliverances and total restoration of lives and destinies.
+              (Numbers 14:21, Isaiah 11:9 and Habakkuk 2:14, Revelations 5:12)
             </p>
           </article>
 
           <article className="mission-block">
-            <span className="mission-number">02</span>
-            <h3>Our Vision</h3>
+            <h3>Our Goal</h3>
             <p>
-              To become a thriving spiritual family where lives are transformed through
-              worship, teaching, discipleship, and genuine connection with Christ.
+              To point humanity to their Glorious destinies in Christ by the help of the Holy Spirit, subduing and dominating their territories now - and possess Heaven at the end.
             </p>
           </article>
         </div>
