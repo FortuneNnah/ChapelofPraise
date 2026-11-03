@@ -1,0 +1,810 @@
+/* ==========================================================
+   ABOUT PAGE — Chapel Of Praise
+   Replaces the old ".about-page" block (the whole ABOUT US
+   section of your stylesheet). Matches the new hero, sermons,
+   contact, units and home sections.
+
+   Every class starts with "ab-" so nothing clashes with the old
+   .about-*, .primary-btn / .secondary-btn rules or the global
+   "section" padding. Colours are direct hex values.
+
+   Page rhythm: hero (cream) -> story (white) -> vision (navy)
+   -> beliefs (cream) -> history (white) -> chaplain card (cream)
+   -> values (navy) -> join band
+   ========================================================== */
+
+.ab-page {
+  width: 100%;
+  background: #f6f3ee; /* same cream as the rest of the redesign */
+  color: #12122a;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------- Buttons ---------- */
+.ab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* comfortable tap target */
+  padding: 12px 28px;
+  border: 2px solid #12122a;
+  border-radius: 999px;
+  background: transparent;
+  color: #12122a;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.ab-btn:hover {
+  transform: translateY(-2px);
+}
+
+.ab-btn:focus-visible {
+  outline: 3px solid #007BFF;
+  outline-offset: 3px;
+}
+
+.ab-btn-primary {
+  background: #007BFF;
+  border-color: #007BFF;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 123, 255, 0.28);
+}
+
+.ab-btn-primary:hover {
+  background: #0465cc;
+  border-color: #0465cc;
+}
+
+.ab-btn-outline:hover {
+  background: #12122a;
+  color: #ffffff;
+}
+
+/* On the blue join band */
+.ab-btn-light {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #12122a;
+}
+
+.ab-btn-light:hover {
+  background: #12122a;
+  border-color: #12122a;
+  color: #ffffff;
+}
+
+.ab-btn-ghost {
+  border-color: #ffffffe6;
+  color: #ffffff;
+}
+
+.ab-btn-ghost:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #12122a;
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.ab-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 48px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 56px 20px 64px; /* overrides the global "section" padding */
+}
+
+.ab-eyebrow {
+  margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-style: italic;
+  font-weight: 600;
+  animation: abFadeUp 0.8s ease-out both;
+}
+
+/* animation: none cancels the global scroll-fade on every h1.
+   The three lines animate instead, one after another. */
+.ab-page .ab-title {
+  margin: 0 0 24px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: none;
+}
+
+.ab-title-line {
+  display: block;
+  font-size: clamp(2.4rem, 9vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: #12122a;
+  animation: abRise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ab-title-line:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.ab-title-line:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.ab-title-line:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+/* Blue gradient lines, like the home hero word */
+.ab-title-accent {
+  color: #007BFF; /* fallback if gradient text is unsupported */
+  background: linear-gradient(180deg, #2e9bff 0%, #007BFF 50%, #0465cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ab-hero-text {
+  max-width: 540px;
+  margin-bottom: 22px;
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  line-height: 1.8;
+  color: #475467;
+}
+
+.ab-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  list-style: none;
+}
+
+.ab-hero-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(16, 24, 40, 0.12);
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.ab-hero-meta li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #007BFF;
+}
+
+.ab-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Hero photo ---------- */
+.ab-hero-visual {
+  position: relative;
+  width: min(100%, 520px);
+  margin: 0 auto;
+}
+
+/* Offset blue block behind the photo */
+.ab-hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 16px -14px -16px 14px;
+  z-index: 0;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #0465cc 0%, #007BFF 100%);
+}
+
+.ab-hero-photo {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #12122a;
+  box-shadow: 0 30px 60px rgba(18, 18, 42, 0.22);
+}
+
+.ab-hero-photo img,
+.ab-story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================
+   SHARED SECTION PIECES
+   ========================================================== */
+.ab-sec {
+  padding: 72px 20px; /* overrides the global "section" padding */
+}
+
+.ab-sec-white {
+  background: #ffffff;
+}
+
+.ab-sec-navy {
+  position: relative;
+  background: #12122a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Soft blue glow in the top-right corner of navy sections */
+.ab-sec-navy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(50% 40% at 90% 0%, rgba(0, 123, 255, 0.26) 0%, rgba(0, 123, 255, 0) 70%);
+}
+
+.ab-inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ab-intro {
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.ab-intro-center {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ab-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #007BFF;
+}
+
+.ab-intro h2 {
+  font-size: clamp(1.9rem, 5.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #101828;
+}
+
+.ab-intro-center h2 {
+  font-size: clamp(1.7rem, 4.8vw, 2.9rem);
+}
+
+.ab-accent {
+  color: #007BFF; /* fallback if gradient text is unsupported */
+  background: linear-gradient(180deg, #2e9bff 0%, #007BFF 50%, #0465cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navy sections: lighter blues and white text */
+.ab-sec-navy .ab-kicker {
+  color: #4aa3ff;
+}
+
+.ab-sec-navy .ab-intro h2 {
+  color: #ffffff;
+}
+
+.ab-sec-navy .ab-accent {
+  background: linear-gradient(180deg, #6bb6ff 0%, #007BFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.ab-pill {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eaf1fb;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0465cc;
+}
+
+.ab-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.ab-grid-3 {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* ==========================================================
+   WHO WE ARE
+   ========================================================== */
+.ab-story {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 44px;
+}
+
+.ab-story-copy {
+  max-width: 540px;
+}
+
+.ab-story-copy p {
+  margin-bottom: 18px;
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  line-height: 1.9;
+  color: #475467;
+}
+
+/* First paragraph is the lead, with the blue rule used elsewhere */
+.ab-story-copy p:first-child {
+  padding-left: 16px;
+  border-left: 3px solid #007BFF;
+  font-weight: 500;
+  color: #12122a;
+}
+
+.ab-story-visual {
+  position: relative;
+  width: min(100%, 520px);
+  margin: 0 auto;
+}
+
+/* Offset navy block, down and to the left (the hero's is blue, up and right) */
+.ab-story-visual::before {
+  content: "";
+  position: absolute;
+  inset: 16px 14px -16px -14px;
+  z-index: 0;
+  border-radius: 28px;
+  background: #12122a;
+}
+
+.ab-story-photo {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #12122a;
+  box-shadow: 0 30px 60px rgba(18, 18, 42, 0.2);
+}
+
+/* ==========================================================
+   VISION / MISSION / GOAL
+   ========================================================== */
+.ab-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.ab-mission-card {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Big faded number in the corner, as on the unit cards */
+.ab-mission-num {
+  position: absolute;
+  top: 6px;
+  right: 22px;
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: #ffffff;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.ab-mission-card h3 {
+  position: relative;
+  margin-bottom: 16px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.ab-mission-card p {
+  position: relative;
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: #ffffffcc;
+}
+
+/* ==========================================================
+   BELIEFS + VALUES CARDS
+   ========================================================== */
+.ab-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 24px;
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  /* Fades in as it scrolls into view, like the rest of your site */
+  animation: abFadeUp 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+.ab-card:hover {
+  transform: translateY(-6px);
+  border-color: #007BFF;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.14);
+}
+
+.ab-card-num {
+  position: absolute;
+  top: 4px;
+  right: 16px;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: #12122a;
+  opacity: 0.06;
+  pointer-events: none;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.ab-card:hover .ab-card-num {
+  color: #007BFF;
+  opacity: 0.14;
+}
+
+.ab-card p {
+  position: relative;
+  font-size: 0.94rem;
+  line-height: 1.85;
+  color: #475467;
+}
+
+/* Values, on navy */
+.ab-value {
+  padding: 30px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  animation: abFadeUp 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+.ab-value:hover {
+  transform: translateY(-6px);
+  border-color: #007BFF;
+  background: rgba(0, 123, 255, 0.12);
+}
+
+.ab-value-bar {
+  display: block;
+  width: 44px;
+  height: 4px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: #007BFF;
+}
+
+.ab-value h3 {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.ab-value p {
+  font-size: 0.94rem;
+  line-height: 1.85;
+  color: #ffffffcc;
+}
+
+/* ==========================================================
+   HISTORY TIMELINE
+   ========================================================== */
+.ab-timeline {
+  display: grid;
+}
+
+.ab-milestone {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 32px 0;
+  border-top: 1px solid rgba(16, 24, 40, 0.1);
+}
+
+.ab-milestone:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* The year is set as a big gradient number, like the Units "12" */
+.ab-year {
+  font-size: clamp(2.8rem, 10vw, 4.6rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #007BFF; /* fallback if gradient text is unsupported */
+  background: linear-gradient(180deg, #2e9bff 0%, #007BFF 50%, #0465cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ab-milestone-body h3 {
+  margin-bottom: 10px;
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #101828;
+}
+
+.ab-milestone-body p {
+  max-width: 620px;
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: #475467;
+}
+
+/* ==========================================================
+   LEADERSHIP — a single featured card for the chaplain
+   ========================================================== */
+.ab-chaplain {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 980px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
+}
+
+.ab-chaplain-photo {
+  aspect-ratio: 4 / 5;
+  background: #12122a;
+}
+
+.ab-chaplain-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 28%; /* keeps the face in frame; adjust if needed */
+}
+
+.ab-chaplain-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 26px 36px;
+}
+
+.ab-chaplain-body h3 {
+  margin-bottom: 16px;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #101828;
+}
+
+/* Blue rule, same as the story and chaplain paragraphs elsewhere */
+.ab-chaplain-body p {
+  max-width: 480px;
+  padding-left: 16px;
+  border-left: 3px solid #007BFF;
+  font-size: clamp(0.98rem, 3vw, 1.08rem);
+  line-height: 1.85;
+  color: #475467;
+}
+
+/* ==========================================================
+   JOIN BAND
+   ========================================================== */
+.ab-join {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: calc(100% - 40px);
+  max-width: 1260px;
+  margin: 64px auto;
+  padding: 36px 24px; /* overrides the global "section" padding */
+  border-radius: 28px;
+  background: #007BFF;
+  color: #ffffff;
+}
+
+.ab-kicker-light {
+  color: #fff;
+}
+
+.ab-join h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.ab-join-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ==========================================================
+   ANIMATIONS + RESPONSIVE
+   ========================================================== */
+@keyframes abRise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes abFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respect visitors who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .ab-page *,
+  .ab-page *::before,
+  .ab-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+
+  .ab-hero-actions,
+  .ab-hero-actions .ab-btn,
+  .ab-join-actions,
+  .ab-join-actions .ab-btn {
+    width: 100%;
+  }
+
+  .ab-hero-actions,
+  .ab-join-actions {
+    flex-direction: column;
+  }
+}
+
+/* ---------- Tablet: 600px and up ---------- */
+@media (min-width: 600px) {
+  .ab-hero {
+    padding: 72px 32px 72px;
+  }
+
+  .ab-sec {
+    padding: 88px 32px;
+  }
+
+  .ab-mission-card {
+    padding: 44px 36px;
+  }
+
+  .ab-join {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 64px);
+    padding: 44px 40px;
+  }
+}
+
+/* ---------- Desktop: 900px and up ---------- */
+@media (min-width: 900px) {
+  .ab-sec {
+    padding: 104px 48px;
+  }
+
+  .ab-story {
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 72px;
+  }
+
+  .ab-mission-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  /* Year on the left, story on the right */
+  .ab-milestone {
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .ab-join {
+    width: calc(100% - 96px);
+    padding: 52px 56px;
+  }
+
+  /* Chaplain card: photo on the left, details on the right */
+  .ab-chaplain {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .ab-chaplain-photo {
+    aspect-ratio: auto;
+    min-height: 460px;
+  }
+
+  .ab-chaplain-body {
+    padding: 48px 48px;
+  }
+}
+
+/* ---------- Large desktop: 1000px and up ---------- */
+@media (min-width: 1000px) {
+  .ab-hero {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+    padding: 88px 48px 96px;
+  }
+
+  .ab-hero-photo {
+    aspect-ratio: 4 / 5;
+  }
+
+  /* The hero photo floats gently, like the other photos on your site */
+  .ab-hero-visual {
+    animation: floatSubtle 5s ease-in-out infinite; /* floatSubtle is defined at the top of your CSS */
+  }
+}
