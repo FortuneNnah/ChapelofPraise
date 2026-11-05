@@ -114,9 +114,6 @@ export const Hero = () => {
             </span>
           </figure>
 
-          {/* Light streak, purely decorative */}
-          <span className="cop-hero-flare" aria-hidden="true"></span>
-
           <div className="cop-hero-card">
             <p>
               We are a church family committed to sharing the truth of God’s

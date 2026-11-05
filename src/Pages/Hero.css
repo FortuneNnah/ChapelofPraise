@@ -235,29 +235,6 @@
   color: #007BFF;
 }
 
-/* Light streak crossing the word and the photo */
-.cop-hero-flare {
-  position: absolute;
-  left: 57%;
-  top: -22%;
-  z-index: 3;
-  width: 5px;
-  height: 40%;
-  border-radius: 999px;
-  pointer-events: none;
-  filter: blur(1.2px);
-  transform: rotate(18deg);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 196, 0, 0.9) 30%,
-    rgba(255, 64, 129, 0.85) 55%,
-    rgba(0, 160, 255, 0.9) 80%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  animation: copFlare 5.5s ease-in-out infinite;
-}
-
 /* ---------- Text card + buttons ---------- */
 /* Mobile / tablet: sits under the photo with a blue rule, like your
    other sections */
@@ -365,20 +342,6 @@
 
   to {
     transform: scale(1);
-  }
-}
-
-@keyframes copFlare {
-
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: rotate(18deg) translateY(0);
-  }
-
-  50% {
-    opacity: 1;
-    transform: rotate(18deg) translateY(-12px);
   }
 }
 
