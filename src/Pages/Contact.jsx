@@ -59,9 +59,9 @@ const serviceItems = [
 ];
 
 const stats = [
-  { value: "15+", label: "Years of ministry" },
+  { value: "13+", label: "Years of ministry" },
   { value: "3", label: "Weekly gatherings" },
-  { value: "24h", label: "Response time" },
+  // { value: "24h", label: "Response time" },
 ];
 
 const subjectOptions = [
@@ -287,7 +287,7 @@ export default function ContactUs() {
       <section className="cx-main" id="visit-us">
         <div className="cx-visit">
           <div className="cx-heading compact">
-            <p className="cx-kicker light">Visit</p>
+            <p className="cx-kicker dark">Visit</p>
             <h2>Service times</h2>
           </div>
 
@@ -304,7 +304,7 @@ export default function ContactUs() {
           </div>
 
           <div className="cx-visit-panel">
-            <p className="cx-kicker light">Find us</p>
+            <p className="cx-kicker dark">Find us</p>
             <h3>Chapel of Praise</h3>
             <p>
               Pav 2, Akwa Ibom State University, Ikot Akpaden.<br />
@@ -466,7 +466,7 @@ export default function ContactUs() {
       {/* ===== Prayer & support band ===== */}
       <section className="cx-support">
         <div className="cx-support-copy">
-          <p className="cx-kicker light">Prayer & Support</p>
+          <p className="cx-kicker dark">Prayer & Support</p>
           <h2>Need pastoral help or prayer?</h2>
           <p>
             We are here for prayer requests, encouragement, and general pastoral care.

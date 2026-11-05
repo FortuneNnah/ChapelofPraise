@@ -13,7 +13,7 @@ import './Unit.css';
 const units = [
   { id: 1, name: "Choir Unit", leader: "Israel Eminue", desc: "Leads worship and coordinates music ministry. Meets weekly to rehearse and worship together." },
   { id: 2, name: "Technical Unit", leader: "Marvellous Garuba", desc: "Support worship services, sound, lighting, and broadcasting for services and special events." },
-  { id: 3, name: "Evangelism", leader: "God'spwer Jedidiah", desc: "Programs and discipleship for teens and young adults — events, small groups and mentorship." },
+  { id: 3, name: "Evangelism", leader: "God'spower Jedidiah", desc: "Programs and discipleship for teens and young adults — events, small groups and mentorship." },
   { id: 4, name: "Ushering", leader: "Abese Emmanuel", desc: "Safe, creative ministry for kids with age-appropriate teaching and activities." },
   { id: 5, name: "Prayer Band", leader: "Olosunde Daniel", desc: "Intercessory prayer teams, emergency prayer support and prayer events." },
   { id: 6, name: "Sanctuary", leader: "Lawrence", desc: "Responsible for keepign the church environment serene and creating a hospitable church environment." },
@@ -197,11 +197,15 @@ export default function Unit() {
             <p className="ux-modal-desc">{active.desc}</p>
 
             <div className="ux-modal-actions">
-              {/* Sends people to the contact page; change the destination if
-                  you add a dedicated sign-up page later */}
-              <Link to="/contact" className="ux-btn ux-btn-primary" onClick={() => setActive(null)}>
+              <a
+                href="https://chat.whatsapp.com/KYveZ6xF9jUIKnMNemEe64?s=cl&p=a&iam=2"
+                className="ux-btn ux-btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setActive(null)}
+              >
                 Join this unit
-              </Link>
+              </a>
               <button type="button" className="ux-btn ux-btn-outline" onClick={() => setActive(null)}>
                 Close
               </button>
