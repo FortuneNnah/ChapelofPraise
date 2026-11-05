@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./Pages/Herosection";
 import Herosection from "./Pages/Herosection";
 import AboutUs from "./Pages/About";
@@ -11,9 +11,20 @@ import Section3 from "./Pages/Section3";
 import Gallery from "./Pages/Gallery";
 import Footer from "./Pages/Footer";
 
+function ScrollToTop() {
+  const { key } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [key]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Herosection />} />
