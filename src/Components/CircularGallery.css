@@ -3,14 +3,17 @@
   height: 100%;
   overflow: hidden;
   cursor: grab;
+  /* Sideways drags move the gallery; up/down swipes still scroll the page */
+  touch-action: pan-y;
 }
 
 .circular-gallery:active {
   cursor: grabbing;
 }
 
+/* Was white, which was invisible on the grey gallery background */
 .circular-gallery:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid #007BFF;
   outline-offset: 4px;
 }
 
@@ -33,5 +36,3 @@
     margin-bottom: 1.5rem;
   }
 }
-
-

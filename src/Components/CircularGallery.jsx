@@ -3,6 +3,17 @@ import { useEffect, useRef } from 'react';
 
 import './CircularGallery.css';
 
+/* ------------------------------------------------------------
+   CHANGES FROM THE ORIGINAL (search for "FIX" to find them):
+   1. No caption  -> no text mesh. Before, a missing `text` was drawn
+      as the word "undefined".
+   2. Captions keep their proportions and shrink to fit the photo's
+      width. Before, they were squashed and could overflow.
+   3. Scroll / drag only react inside the gallery. Before, the wheel,
+      mouse and touch listeners were on the whole window, so scrolling
+      the page spun the gallery and dragging anywhere moved it.
+   ------------------------------------------------------------ */
+
 function debounce(func, wait) {
   let timeout;
   return function (...args) {
@@ -77,22 +88,31 @@ async function loadCustomFont(fontUrl) {
   return isStylesheet ? loadFontFromStylesheet(fontUrl) : loadFontFromFile(fontUrl);
 }
 
-async function resolveFont(font, fontUrl) {
+function applyFontWeight(font, fontWeight) {
+  if (fontWeight == null) return font;
+  return font.replace(
+    /^(\s*)(?:(?:normal|bold|bolder|lighter|[1-9]00)\s+)?(?=\d+(?:\.\d+)?px)/i,
+    `$1${fontWeight} `
+  );
+}
+
+async function resolveFont(font, fontUrl, fontWeight) {
+  const weightedFont = applyFontWeight(font, fontWeight);
   // Use the bundled Figtree stylesheet when the caller relies on the default
   // font, otherwise honor the explicit `fontUrl`.
   const effectiveUrl = fontUrl || (font === DEFAULT_FONT ? DEFAULT_FONT_URL : null);
   if (!effectiveUrl) {
     if (document.fonts && document.fonts.load) {
       try {
-        await document.fonts.load(font);
+        await document.fonts.load(weightedFont);
         await document.fonts.ready;
       } catch {}
     }
-    return font;
+    return weightedFont;
   }
   try {
     const family = await loadCustomFont(effectiveUrl);
-    const sizeMatch = font.match(/^\s*(.*?\d+px)/);
+    const sizeMatch = weightedFont.match(/^\s*(.*?\d+px)/);
     const prefix = sizeMatch ? sizeMatch[1].trim() : 'bold 30px';
     const resolved = `${prefix} "${family}"`;
     if (document.fonts && document.fonts.load) {
@@ -103,7 +123,7 @@ async function resolveFont(font, fontUrl) {
     return resolved;
   } catch (error) {
     console.error('CircularGallery: unable to load font from', fontUrl, error);
-    return font;
+    return weightedFont;
   }
 }
 
@@ -112,24 +132,50 @@ function getFontSize(font) {
   return match ? parseInt(match[1], 10) : 30;
 }
 
+function wrapText(context, text, maxWidth) {
+  const lines = [];
+  let line = '';
+
+  for (const word of text.split(/\s+/)) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (line && context.measureText(candidate).width > maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+
+  if (line) lines.push(line);
+  return lines;
+}
+
 function createTextTexture(gl, text, font = 'bold 30px monospace', color = 'black') {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
   context.font = font;
-  const metrics = context.measureText(text);
-  const textWidth = Math.ceil(metrics.width);
-  const textHeight = Math.ceil(getFontSize(font) * 1.2);
-  canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
+  const fontSize = getFontSize(font);
+  const lineHeight = fontSize * 1.2;
+  const lines = wrapText(context, text, fontSize * 7.2);
+  const textWidth = Math.ceil(Math.max(...lines.map(line => context.measureText(line).width)));
+  const resolution = 4;
+  const width = textWidth + 20;
+  const height = Math.ceil(lineHeight * lines.length) + 20;
+  canvas.width = width * resolution;
+  canvas.height = height * resolution;
   context.font = font;
   context.fillStyle = color;
   context.textBaseline = 'middle';
   context.textAlign = 'center';
+  context.scale(resolution, resolution);
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
+  lines.forEach((line, index) => {
+    const y = (height - lineHeight * lines.length) / 2 + lineHeight * (index + 0.5);
+    context.fillText(line, width / 2, y);
+  });
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
-  return { texture, width: canvas.width, height: canvas.height };
+  return { texture, width: canvas.width, height: canvas.height, lineCount: lines.length };
 }
 
 class Title {
@@ -144,7 +190,9 @@ class Title {
     this.createMesh();
   }
   createMesh() {
-    const { texture, width, height } = createTextTexture(this.gl, this.text, this.font, this.textColor);
+    const { texture, width, height, lineCount } = createTextTexture(this.gl, this.text, this.font, this.textColor);
+    this.aspect = width / height;
+    this.lineCount = lineCount;
     const geometry = new Plane(this.gl);
     const program = new Program(this.gl, {
       vertex: `
@@ -172,12 +220,24 @@ class Title {
       transparent: true
     });
     this.mesh = new Mesh(this.gl, { geometry, program });
-    const aspect = width / height;
-    const textHeight = this.plane.scale.y * 0.15;
-    const textWidth = textHeight * aspect;
-    this.mesh.scale.set(textWidth, textHeight, 1);
-    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
     this.mesh.setParent(this.plane);
+    this.onResize();
+  }
+  // Keep the text's glyph size consistent; wrapped lines increase the caption
+  // height instead of shrinking the font to fit a single line.
+  onResize() {
+    const planeW = this.plane.scale.x;
+    const planeH = this.plane.scale.y;
+    let worldH = planeH * 0.125145 * this.lineCount;
+    let worldW = worldH * this.aspect;
+    const maxW = planeW * 0.95;
+    if (worldW > maxW) {
+      const shrink = maxW / worldW;
+      worldW *= shrink;
+      worldH *= shrink;
+    }
+    this.mesh.scale.set(worldW / planeW, worldH / planeH, 1);
+    this.mesh.position.y = -0.5 - this.mesh.scale.y * 0.5 - 0.05;
   }
 }
 
@@ -300,11 +360,14 @@ class Media {
     this.plane.setParent(this.scene);
   }
   createTitle() {
+    // FIX: no caption means no text mesh (this used to draw "undefined")
+    const hasText = typeof this.text === 'string' && this.text.trim() !== '';
+    if (!hasText) return;
     this.title = new Title({
       gl: this.gl,
       plane: this.plane,
       renderer: this.renderer,
-      text: this.text,
+      text: this.text.trim(),
       textColor: this.textColor,
       font: this.font
     });
@@ -364,6 +427,7 @@ class Media {
     this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
     this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
+    if (this.title) this.title.onResize(); // FIX: re-size the caption with the photo
     this.padding = isMobile ? 1.5 : 2;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
@@ -470,12 +534,15 @@ class App {
     this.scroll.target = this.scroll.position + distance;
   }
   onTouchUp() {
+    if (!this.isDown) return;
     this.isDown = false;
     this.onCheck();
   }
+  // FIX: only sideways swipes (trackpad / shift + wheel) move the gallery.
+  // Normal up/down scrolling now belongs to the page.
   onWheel(e) {
-    const delta = e.deltaY || e.wheelDelta || e.detail;
-    this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    this.scroll.target += (e.deltaX > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
     this.onCheckDebounce();
   }
   onKeyDown(e) {
@@ -546,34 +613,37 @@ class App {
     this.boundOnKeyDown = this.onKeyDown.bind(this);
 
     window.addEventListener('resize', this.boundOnResize);
-    window.addEventListener('mousewheel', this.boundOnWheel);
-    window.addEventListener('wheel', this.boundOnWheel);
-    window.addEventListener('mousedown', this.boundOnTouchDown);
+
+    // FIX: these used to be on `window`. Now a drag has to START inside the
+    // gallery. Move/release stay on the window so a drag that leaves the
+    // gallery still ends cleanly.
+    this.container.addEventListener('wheel', this.boundOnWheel, { passive: true });
+    this.container.addEventListener('mousedown', this.boundOnTouchDown);
+    this.container.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
     window.addEventListener('mousemove', this.boundOnTouchMove);
     window.addEventListener('mouseup', this.boundOnTouchUp);
-    window.addEventListener('touchstart', this.boundOnTouchDown);
-    window.addEventListener('touchmove', this.boundOnTouchMove);
+    window.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
     window.addEventListener('touchend', this.boundOnTouchUp);
 
-    this.container?.addEventListener('keydown', this.boundOnKeyDown);
+    this.container.addEventListener('keydown', this.boundOnKeyDown);
   }
   destroy() {
     window.cancelAnimationFrame(this.raf);
     window.removeEventListener('resize', this.boundOnResize);
-    window.removeEventListener('mousewheel', this.boundOnWheel);
-    window.removeEventListener('wheel', this.boundOnWheel);
-    window.removeEventListener('mousedown', this.boundOnTouchDown);
     window.removeEventListener('mousemove', this.boundOnTouchMove);
     window.removeEventListener('mouseup', this.boundOnTouchUp);
-    window.removeEventListener('touchstart', this.boundOnTouchDown);
     window.removeEventListener('touchmove', this.boundOnTouchMove);
     window.removeEventListener('touchend', this.boundOnTouchUp);
-    if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
-      this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
-    }
 
     if (this.container) {
+      this.container.removeEventListener('wheel', this.boundOnWheel);
+      this.container.removeEventListener('mousedown', this.boundOnTouchDown);
+      this.container.removeEventListener('touchstart', this.boundOnTouchDown);
       this.container.removeEventListener('keydown', this.boundOnKeyDown);
+    }
+
+    if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
+      this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
     }
   }
 }
@@ -585,6 +655,7 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   fontUrl,
+  fontWeight,
   scrollSpeed = 2,
   scrollEase = 0.05
 }) {
@@ -593,7 +664,7 @@ export default function CircularGallery({
     if (!containerRef.current) return;
     let app;
     let isMounted = true;
-    resolveFont(font, fontUrl).then(resolvedFont => {
+    resolveFont(font, fontUrl, fontWeight).then(resolvedFont => {
       if (!isMounted || !containerRef.current) return;
       app = new App(containerRef.current, {
         items,
@@ -610,7 +681,7 @@ export default function CircularGallery({
       isMounted = false;
       if (app) app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, fontUrl, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, fontUrl, fontWeight, scrollSpeed, scrollEase]);
   return (
     <div
       className="circular-gallery"
